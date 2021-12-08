@@ -1,0 +1,10 @@
+#!/bin/sh
+
+pacman -Qi zsh
+if [ $? -eq 0 ]; then
+	echo 'Zsh installed!'
+else
+	pacman -Sy zsh
+fi
+read -p "Pick username:" uname
+useradd -m -s /bin/zsh uname 

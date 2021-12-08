@@ -1,0 +1,85 @@
+#!/bin/bash
+source ./chrootScrpitsDir/select
+
+blkList="lsblk -a -o NAME,TYPE,SIZE,FSTYPE,MOUNTPOINT"
+
+disks="$(lsblk -o NAME -lnda)"
+readarray -t disks <<<"$disks"
+
+#read -p "Do the partitions now using cfdisk(Enter to select disks)"
+
+clrPrint(){
+    clear
+    $blkList
+    cat << EOF
+
+-> $1
+
+EOF
+}
+
+while true; do
+    clrPrint "Select the disk to be opened in cfdisk:"
+    disks1=(${disks[@]} "Done")
+    select_option "${disks1[@]}"
+    selection=$?
+    if [[ $selection -eq $((${#disks1[@]} -1)) ]] ; then
+        break
+    else
+        echo ${selection}
+        cfdisk "/dev/${disks1[$selection]}"
+    fi
+done
+
+pickPartition(){
+    clrPrint "Pick $1 partition:"
+    parts=$(lsblk -lna -o NAME /dev/$2)
+    readarray -t parts <<<"$parts"
+    parts=(${parts[@]:1} "Back")
+    select_option "${parts[@]}"
+    local selection=$?
+    if [[ $selection -eq $((${#parts[@]} -1)) ]] ; then
+        return 0
+    else
+        return $(( selection + 1))
+    fi
+}
+
+pickDisk(){
+    clrPrint "Pick the disk where the $1 partition is:"
+    select_option "${disks[@]}"
+    return $?
+}
+
+pickPlaces(){
+    clear
+    case "$1" in
+        "root") mountName="root" ;;
+        "esp")  mountName="esp/efi/boot" ;;
+        "home") mountName="home" ;;
+        "swap") mountName="swap" ;;
+    esac
+    while true; do
+        pickDisk $mountName
+        selDisk=${disks[$?]}
+        pickPartition $mountName $selDisk
+        selPart="${selDisk}$?"
+        if grep $selPart <<< $(lsblk) > /dev/null ; then break; fi
+    done
+    fullPath="/dev/$selPart"
+    echo "$fullPath"
+}
+clear
+
+#rootPath$(pickPlaces root)
+#echo $rootPath
+pickPlaces "root"
+rootPath=$fullPath
+mkfs.ext4 $rootPath
+mount $rootPath /mnt
+mkdir /mnt/boot
+pickPlaces "esp"
+espPath=$fullPath
+mkfs.vfat -F 32 $espPth
+mount $espPath /mnt/boot
+
