@@ -1,16 +1,73 @@
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/.cargo/bin:$HOME/bin:/usr/local/bin:$PATH
+
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
 
 export ZSH_DISABLE_COMPFIX=true
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/./.oh-my-zsh"
+export ZSH="/home/grk/.oh-my-zsh"
+export EDITOR=vim
+export TERM=xterm-256color
+ZSH_THEME="agnoster"
+
+plugins=(git)
+
+source $ZSH/oh-my-zsh.sh
+
+# Settings for Japanese input
+export GTK_IM_MODULE='ibus'
+export QT_IM_MODULE='ibus'
+export XMODIFIERS=@im='ibus'
+
+#Toolbar for anthy
+ibus-daemon -drx
+
+
+
+ned(){
+    local pathToFile=$1
+    case $1 in
+        zrc)
+            pathToFile=$HOME/.zshrc
+            ;;
+        zp)
+            pathToFile=$HOME/.zprofile
+            ;;
+
+        xrc)
+            pathToFile=$HOME/.xinitrc
+            ;;
+        i3c)
+            pathToFile=$HOME/.config/i3/config
+            ;;
+        polyc)
+            pathToFile=$HOME/.config/polybar/config
+            ;;
+        *)
+            ;;
+        esac
+    sudo nano $pathToFile
+}
+
+battery(){
+	upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep percentage
+	upower -i /org/freedesktop/UPower/devices/battery_BAT1 | grep percentage
+}
+
+alias kysfag="poweroff"
+alias ll="ls -laF"
+alias cdtp="cd /mnt/Transfer-Part"
+alias minecraft='java -jar ~/Downloads/Technic.jar'
+#xbindkeys
+macchina
+
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="ctm"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -72,9 +129,6 @@ ZSH_THEME="ctm"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
-
-source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
@@ -102,50 +156,4 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-export PATH=$PATH:~/.local/bin
 
-# Settings for Japanese input
-export GTK_IM_MODULE='ibus'
-export QT_IM_MODULE='ibus'
-export XMODIFIERS=@im='ibus'
-
-#Toolbar for anthy
-ibus-daemon -drx
-
-
-ssc(){
-    export TERM=xterm
-    ssh sc
-}
-
-ned(){
-    local pathToFile=$1
-    case $1 in
-        zrc)
-            pathToFile=$HOME/.zshrc
-            ;;
-        zp)
-            pathToFile=$HOME/.zprofile
-            ;;
-        xrc)
-            pathToFile=$HOME/.xinitrc
-            ;;
-        i3c)
-            pathToFile=$HOME/.config/i3/config
-            ;;
-        polyc)
-            pathToFile=$HOME/.config/polybar/config
-            ;;
-        *)
-            ;;
-        esac
-    sudo nano $pathToFile
-}
-
-alias sshsc="ssh 01a96561@sc.di.uminho.pt -oKexAlgorithms=+diffie-hellman-group1-sha1 -caes128-cbc"
-alias kysfag="sudo shutdown 0"
-alias ll="ls -laF"
-alias cdtp="cd /mnt/Transfer-Part"
-alias minecraft='java -jar ~/Downloads/Technic.jar'
-xbindkeys
-neofetch
