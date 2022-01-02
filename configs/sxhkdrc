@@ -1,0 +1,45 @@
+# i3 motion
+
+super + shift + {q,r,e,c}
+        i3-msg {kill,restart,exit,reload}
+
+## FOCUS
+
+super + {1-9, 0, Tab}
+        i3-msg workspace {1-9,10,back_and_forth}
+
+super + {h,j,k,l}
+        i3-msg focus {left,down,up,right}
+
+super + {Left,Down,Up,Right}
+        i3-msg focus {left,down,up,right}
+
+## CONTAINER
+
+super + shift + {1-9,0}
+        wn={1-9,10}; i3-msg move container to workspace $wn ; i3-msg workspace number $wn
+
+# XF86 KEYS
+
+XF86MonBrightness{Up,Down}
+        blind backlight {+,-}
+
+XF86KbdBrightness{Up,Down}
+        blind keyboard {+,-}
+
+## control media
+
+XF86Audio{_,Mic}Mute
+        deaf {mute, mic}
+
+XF86Audio{Raise,Lower}Volume
+        deaf {+,-}
+
+XF86Audio{Play,Stop,Prev,Next}
+	
+
+Print
+        gscreenshot-cli -s -c
+
+super + Return
+        alacritty
