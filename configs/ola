@@ -1,0 +1,10 @@
+/home/grk/PandorasBox/configs/synaptics /etc/X11/xorg.conf.d/70-synaptics.conf sudo
+/home/grk/PandorasBox/configs/zshrc     /home/grk/.zshrc
+/home/grk/PandorasBox/configs/zprofile  /home/grk/.zprofile
+/home/grk/PandorasBox/configs/polybar   /home/grk/.config/polybar
+/home/grk/PandorasBox/configs/macchina  /home/grk/.config/macchina
+/home/grk/PandorasBox/configs/i3        /home/grk/.config/i3/config
+/home/grk/PandorasBox/configs/sxhkdrc   /home/grk/.config/sxhkd/sxhkdrc
+/home/grk/PandorasBox/configs/alacritty /home/grk/.config/alacritty/alacritty.yml
+/home/grk/PandorasBox/configs/neofetch  /home/grk/.config/neofetch/config.conf
+/home/grk/PandorasBox/configs/xinitrc   /home/grk/.xinitrc

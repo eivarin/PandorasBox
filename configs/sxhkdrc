@@ -5,41 +5,75 @@ super + shift + {q,r,e,c}
 
 ## FOCUS
 
+super + f
+        i3-msg fullscreen toggle
+
 super + {1-9, 0, Tab}
         i3-msg workspace {1-9,10,back_and_forth}
 
 super + {h,j,k,l}
         i3-msg focus {left,down,up,right}
 
-super + {Left,Down,Up,Right}
-        i3-msg focus {left,down,up,right}
+super + {Left,Down,Up,Right,space,a}
+        i3-msg focus {left,down,up,right,mode_toggle,parent}
+
+super + {v,h}
+        i3-msg split {v,h}
+
+super + {s,w,e}
+        i3-msg layout {stacking,tabbed,toggle split}
+
+super + shift + space
+        i3-msg floating toggle
+
+super + alt + l
+	i3lock --show-failed-attempts  --image ~/PandorasBox/wp.png --tiling
 
 ## CONTAINER
 
 super + shift + {1-9,0}
         wn={1-9,10}; i3-msg move container to workspace $wn ; i3-msg workspace number $wn
 
+super + shift + {h,j,k,l}
+        i3-msg move {left,down,up,right}
+
+super + shift + {Left,Down,Up,Right}
+        i3-msg move {left,down,up,right}
+
+super + alt + {h,j,k,l}
+       i3-msg resize {shrink width,grow height,shrink height,grow width} 10 px or 10 ppt
+
+super + alt + {Right,Up,Down,Left}
+       i3-msg resize {shrink width,grow height,shrink height,grow width} 10 px or 10 ppt
+
+
 # XF86 KEYS
 
 XF86MonBrightness{Up,Down}
-        blind backlight {+,-}
-
-XF86KbdBrightness{Up,Down}
-        blind keyboard {+,-}
+        xbacklight {-inc,-dec} 20
 
 ## control media
 
 XF86Audio{_,Mic}Mute
-        deaf {mute, mic}
+        type={sink,source}; pactl set-${type}-mute @DEFAULT_${type:u}@ toggle
 
 XF86Audio{Raise,Lower}Volume
-        deaf {+,-}
+        pactl set-sink-volume @DEFAULT_SINK@ {+,-}10%
 
-XF86Audio{Play,Stop,Prev,Next}
-	
+XF86Audio{Play,Prev,Next}
+        playerctl {play-pause,previous,next}
 
 Print
         gscreenshot-cli -s -c
 
+super + d
+        rofi -modi drun,run -show drun
+
 super + Return
         alacritty
+
+super + F{1,2,3,4}
+        {google-chrome-stable,discord,spotify,nautilus}
+
+super + alt + l
+        i3lock

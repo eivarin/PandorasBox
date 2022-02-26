@@ -9,7 +9,11 @@ prefer_small_ascii = false
 separator = "->"
 key_color = "Cyan"
 separator_color = "Yellow"
-palette = "Full"
+
+[palette]
+type = "Full"
+visible = true
+glyph = "	█	█	█"
 
 [bar]
 glyph = "ߋ"

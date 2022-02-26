@@ -12,7 +12,7 @@ export PATH=$PATH:$ANDROID_HOME/tools/
 PATH=$ANDROID_HOME/emulator:$PATH
 
 
-export PATH=$ANDROID_HOME/platform-tools:$HOME/.cargo/bin:$HOME/bin:/usr/local/bin:$PATH
+export PATH=$ANDROID_HOME/platform-tools:$HOME/.cargo/bin:$HOME/.local/bin:$HOME/bin:/usr/local/bin:$PATH
 
 
 export LANG=en_US.UTF-8
@@ -74,6 +74,9 @@ alias kysfag="poweroff"
 alias ll="ls -laF"
 alias cdtp="cd /mnt/Transfer-Part"
 alias minecraft='java -jar ~/Downloads/Technic.jar'
+
+export MCFLY_RESULTS=50
+eval "$(mcfly init zsh)"
 #xbindkeys
 macchina
 

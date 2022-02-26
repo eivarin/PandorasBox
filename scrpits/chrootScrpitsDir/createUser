@@ -7,4 +7,7 @@ else
 	pacman -Sy zsh
 fi
 read -p "Pick username:" uname
-useradd -m -s /bin/zsh uname 
+mkdir -p /home/$uname
+useradd -d /home/$uname -M -s /bin/zsh $uname
+chown -R ${uname}:${uname} /home/$uname
+passwd $uname

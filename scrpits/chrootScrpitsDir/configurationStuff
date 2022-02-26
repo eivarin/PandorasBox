@@ -20,3 +20,4 @@ ln -sf /usr/share/zoneinfo/Europe/Lisbon /etc/localtime
 hwclock --systohc
 localeConfig
 hostsConfig
+passwd

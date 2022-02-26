@@ -4,4 +4,10 @@ export XDG_SESSION_TYPE=x11
 export GDK_BACKEND=x11
 #exec gnome-session
 #exec xbindkeys
-exec i3
+
+blueman-applet &
+nm-applet &
+sxhkd &
+dunst &
+feh --bg-scale ~/PandorasBox/wp.png &
+exec i3 -V -d all &>> "$HOME/i3.log"
