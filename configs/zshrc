@@ -35,10 +35,6 @@ export GTK_IM_MODULE='ibus'
 export QT_IM_MODULE='ibus'
 export XMODIFIERS=@im='ibus'
 
-#Toolbar for anthy
-ibus-daemon -drx
-
-
 
 ned(){
     local pathToFile=$1
@@ -75,8 +71,6 @@ alias ll="ls -laF"
 alias cdtp="cd /mnt/Transfer-Part"
 alias minecraft='java -jar ~/Downloads/Technic.jar'
 
-export MCFLY_RESULTS=50
-eval "$(mcfly init zsh)"
 #xbindkeys
 macchina
 

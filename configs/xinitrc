@@ -5,6 +5,7 @@ export GDK_BACKEND=x11
 #exec gnome-session
 #exec xbindkeys
 
+ibus-daemon -drxR
 blueman-applet &
 nm-applet &
 sxhkd &
