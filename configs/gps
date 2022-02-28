@@ -8,3 +8,4 @@
 /home/grk/PandorasBox/configs/alacritty /home/grk/.config/alacritty/alacritty.yml
 /home/grk/PandorasBox/configs/neofetch  /home/grk/.config/neofetch/config.conf
 /home/grk/PandorasBox/configs/xinitrc   /home/grk/.xinitrc
+/home/grk/PandorasBox/configs/.gitconfig   /home/grk/.gitconfig
