@@ -1,0 +1,14 @@
+#!/bin/sh
+
+timedatectl
+bash ./diskPartition
+pacstrap -k /mnt $(cat pacstrap.list)
+
+genfstab -U /mnt >> /mnt/etc/fstab
+
+cp ./chroot /mnt/chroot -r
+
+arch-chroot /mnt /chroot/setup
+
+rm -rf /mnt/chroot
+

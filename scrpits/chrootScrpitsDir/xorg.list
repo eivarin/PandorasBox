@@ -1,6 +1,0 @@
-base: xorg xorg-xinit 
-amd: xf86-video-amdgpu
-intel: xf86-video-intel
-nvidia: nvidia
-laptop: xf86-input-synaptics
-thinkpad: fprintd

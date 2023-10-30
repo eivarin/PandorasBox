@@ -32,6 +32,6 @@ _make_symlink(){
     fi
 }
 
-cat $(pwd)/configs/gps | while read line; do
+cat $(pwd)/../configs/gps | while read line; do
   _make_symlink $line
 done

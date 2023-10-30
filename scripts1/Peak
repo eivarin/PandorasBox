@@ -1,3 +1,0 @@
-#!/bin/sh
-if ! ls /sys/firmware/efi/efivars > /dev/null ; then echo "Not in UEFI mode"; exit; fi
-timedatectl set-ntp true

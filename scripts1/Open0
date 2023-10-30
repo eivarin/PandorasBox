@@ -1,5 +1,0 @@
-packages=$(cat pacstrap.list)
-pacstrap /mnt $packages
-genfstab -U /mnt >> /mnt/etc/fstab
-read -p "Pick username:" uname
-arch-chroot /mnt useradd -m -s /bin/zsh $uname

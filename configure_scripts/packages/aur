@@ -1,0 +1,6 @@
+#!/bin/bash
+git clone https://github.com/jtexeira/tiny-aura.git
+cd tiny-aura
+sudo make install
+cd ..
+aura $(cat aur.stuff)

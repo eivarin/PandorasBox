@@ -1,5 +1,5 @@
 #!/bin/bash
-source ./chrootScrpitsDir/select
+source ./Select
 
 blkList="lsblk -a -o NAME,TYPE,SIZE,FSTYPE,MOUNTPOINT"
 
@@ -71,15 +71,21 @@ pickPlaces(){
 }
 clear
 
-#rootPath$(pickPlaces root)
-#echo $rootPath
-pickPlaces "root"
-rootPath=$fullPath
-mkfs.ext4 $rootPath
-mount $rootPath /mnt
-mkdir /mnt/boot
-pickPlaces "esp"
-espPath=$fullPath
-mkfs.vfat -F 32 $espPth
-mount $espPath /mnt/boot
+makeAndMount(){
+    local name=$1
+    local path=$2
+    pickPlaces $1
+    devpath=$fullPath
+    case "$1" in
+        "root") mkfs.ext4 $path ;;
+        "esp")  mkfs.vfat -F 32 ;;
+        "home") mkfs.ext4 $path ;;
+        "swap") mkfs.ext4 $path ;;
+    esac
+    mount --mkdir $devpath /mnt$path
+}
+
+makeAndMount root /
+makeAndMount home /home
+makeAndMount esp /boot
 

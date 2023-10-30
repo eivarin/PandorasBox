@@ -21,3 +21,9 @@ hwclock --systohc
 localeConfig
 hostsConfig
 passwd
+systemctl enable NetworkManager
+
+groupadd wheel
+echo 'wheel ALL=(ALL:ALL) ALL' | sudo EDITOR='tee -a' visudo
+bash /chroot/createUser
+bash /chroot/setUpGrub

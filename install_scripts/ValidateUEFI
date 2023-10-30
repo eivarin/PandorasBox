@@ -1,0 +1,9 @@
+#!/bin/sh
+if ! ls /sys/firmware/efi/efivars > /dev/null 
+then echo "Not in UEFI mode"
+exit
+else if ping -c 1 google.com > /dev/null
+then echo "In UEFI mode. Internet connection is up. You can run ./Open"
+else echo "In UEFI mode. Internet connection is down. Connect before running ./Open"
+fi
+fi

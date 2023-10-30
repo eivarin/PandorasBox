@@ -1,6 +1,8 @@
 #!/bin/bash
 lspciR=$(lspci -v | grep -A1 -e VGA -e 3D)
 
+install_type=$1
+
 getPackages(){
 	local category=$1
 	local list=$2
@@ -8,8 +10,11 @@ getPackages(){
 	echo ${inter#${category}:}
 }
 
-xorgList=$(cat xorg.list)
+
+
+xorgList=$(cat xorg.stuff)
 laptopPackages=$(getPackages laptop "$xorgList" )
+thinkpadPackages=$(getPackages thinkpad "$xorgList" )
 xorgPackages=$(getPackages base "$xorgList" )
 
 checkGPUs(){
@@ -39,5 +44,11 @@ gpuPackages(){
 	esac
 	echo "$amdP $intelP $nvidiaP"
 }
-gpuPackages
-echo $?
+
+gpuP=$(gpuPackages)
+case "$install_type" in
+	"base") result="$gpuP $xorgPackages" ;;
+	"laptop")  result="$gpuP $xorgPackages $laptopPackages" ;;
+	"thinkpad") result="$gpuP $xorgPackages $laptopPackages $thinkpadPackages" ;;
+esac
+echo $result

@@ -23,7 +23,7 @@ super + {v,h}
 super + {s,w,e}
         i3-msg layout {stacking,tabbed,toggle split}
 
-super + shift + space
+super + shift + f
         i3-msg floating toggle
 
 super + alt + l
