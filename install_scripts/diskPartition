@@ -77,10 +77,10 @@ makeAndMount(){
     pickPlaces $1
     devpath=$fullPath
     case "$1" in
-        "root") mkfs.ext4 $path ;;
-        "esp")  mkfs.vfat -F 32 ;;
-        "home") mkfs.ext4 $path ;;
-        "swap") mkfs.ext4 $path ;;
+        "root") mkfs.ext4 $devpath ;;
+        "esp")  mkfs.vfat -F 32 $devpath ;;
+        "home") mkfs.ext4 $devpath ;;
+        "swap") mkfs.ext4 $devpath ;;
     esac
     mount --mkdir $devpath /mnt$path
 }

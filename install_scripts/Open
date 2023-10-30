@@ -2,13 +2,13 @@
 
 timedatectl
 bash ./diskPartition
-pacstrap -k /mnt $(cat pacstrap.list)
+pacstrap -K /mnt $(cat pacstrap.list)
 
 genfstab -U /mnt >> /mnt/etc/fstab
 
 cp ./chroot /mnt/chroot -r
 
-arch-chroot /mnt /chroot/setup
+arch-chroot /mnt bash /chroot/setup
 
 rm -rf /mnt/chroot
 

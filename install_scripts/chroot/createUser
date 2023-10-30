@@ -9,6 +9,6 @@ fi
 read -p "Pick username:" uname
 mkdir -p /home/$uname
 git clone https://github.com/eivarin/PandorasBox.git /home/$uname/PandorasBox
-useradd -d /home/$uname -M -s /bin/zsh $uname
+useradd -G wheel -d /home/$uname -M -s /bin/zsh $uname
 chown -R ${uname}:${uname} /home/$uname
 passwd $uname
