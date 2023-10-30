@@ -1,3 +1,0 @@
-#!/bin/bash
-pacman -Sy $(cat pacman.stuff)
-./aur

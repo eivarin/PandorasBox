@@ -1,0 +1,4 @@
+#!/bin/bash
+read -p "Type of xorg isntall (base|laptop|thinkpad):" type
+pacman -Sy $(bash ./xorgPackages $type) $(cat pacman.stuff)
+bash aur
