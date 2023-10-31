@@ -10,6 +10,6 @@ read -p "Pick username:" uname
 mkdir -p /home/$uname
 git clone https://github.com/eivarin/PandorasBox.git /home/$uname/PandorasBox
 useradd -G wheel -d /home/$uname -M -s /bin/zsh $uname
-echo '$uname ALL=(ALL:ALL) ALL' | sudo EDITOR='tee -a' visudo
+echo $uname 'ALL=(ALL:ALL) ALL' | sudo EDITOR='tee -a' visudo
 chown -R ${uname}:${uname} /home/$uname
 passwd $uname
