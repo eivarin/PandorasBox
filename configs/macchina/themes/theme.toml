@@ -13,10 +13,10 @@ separator_color = "Yellow"
 [palette]
 type = "Full"
 visible = true
-glyph = "	█	█	█"
+glyph = " ⬤"
 
 [bar]
-glyph = "ߋ"
+glyph = "⬤"
 symbol_open = '['
 symbol_close = ']'
 visible = true

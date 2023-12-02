@@ -1,12 +1,14 @@
-/home/grk/PandorasBox/configs/libinput /etc/X11/xorg.conf.d/30-touchpad.conf sudo
-/home/grk/PandorasBox/configs/zshrc     /home/grk/.zshrc
-/home/grk/PandorasBox/configs/zprofile  /home/grk/.zprofile
-/home/grk/PandorasBox/configs/polybar   /home/grk/.config/polybar
-/home/grk/PandorasBox/configs/rofi      /home/grk/.config/rofi
-/home/grk/PandorasBox/configs/macchina  /home/grk/.config/macchina
-/home/grk/PandorasBox/configs/i3        /home/grk/.config/i3/config
-/home/grk/PandorasBox/configs/sxhkdrc   /home/grk/.config/sxhkd/sxhkdrc
-/home/grk/PandorasBox/configs/alacritty /home/grk/.config/alacritty/alacritty.yml
-/home/grk/PandorasBox/configs/neofetch  /home/grk/.config/neofetch/config.conf
-/home/grk/PandorasBox/configs/xinitrc   /home/grk/.xinitrc
-/home/grk/PandorasBox/configs/.gitconfig   /home/grk/.gitconfig
+/home/grk/PandorasBox/configs/libinput      /etc/X11/xorg.conf.d/30-touchpad.conf sudo
+/home/grk/PandorasBox/configs/zshrc         /home/grk/.zshrc
+/home/grk/PandorasBox/configs/zprofile      /home/grk/.zprofile
+/home/grk/PandorasBox/configs/polybar       /home/grk/.config/polybar
+/home/grk/PandorasBox/configs/rofi          /home/grk/.config/rofi
+/home/grk/PandorasBox/configs/macchina      /home/grk/.config/macchina
+/home/grk/PandorasBox/configs/sxhkdrc       /home/grk/.config/sxhkd/sxhkdrc
+/home/grk/PandorasBox/configs/kitty         /home/grk/.config/kitty
+/home/grk/PandorasBox/configs/neofetch      /home/grk/.config/neofetch/config.conf
+/home/grk/PandorasBox/configs/copyq         /home/grk/.config/copyq/copyq.conf
+/home/grk/PandorasBox/configs/bspwmrc       /home/grk/.config/bspwm/bspwmrc
+/home/grk/PandorasBox/configs/picom         /home/grk/.config/picom
+/home/grk/PandorasBox/configs/xinitrc       /home/grk/.xinitrc
+/home/grk/PandorasBox/configs/.gitconfig    /home/grk/.gitconfig
