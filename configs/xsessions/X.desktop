@@ -1,0 +1,5 @@
+[Desktop Entry]
+Name=X
+Comment=Binary space partitioning window manager
+Exec=startx
+Type=Application

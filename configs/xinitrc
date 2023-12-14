@@ -1,3 +1,4 @@
+#!/bin/bash
 ibus-daemon -drxR
 xhost +local:root > /dev/null
 blueman-applet &
