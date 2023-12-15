@@ -33,7 +33,7 @@ super + {_,shift + } {F1,F2,F3,Return}
         toggle={true,false}; \
         {app=google-chrome-stable ; icon= ;\
         , app=code ; icon=󰨞 ;\
-        , app=nautilus ; icon= ;\
+        , app=qtfm ; icon= ;\
         , app=kitty ; icon= ; \
         } \
         [[ "$toggle" = true ]] || (NNAME=$(rofi -dmenu -p "Name" -theme ~/.config/rofi/config.rasi); bspc monitor -a "$icon-$NNAME" && bspc desktop -f "$icon-$NNAME") ;\
@@ -41,9 +41,6 @@ super + {_,shift + } {F1,F2,F3,Return}
 
 super + p
         copyq toggle
-
-# super + alt + l
-#         i3lock
 
 super + shift + Escape
 	pkill -USR1 -x sxhkd
@@ -61,7 +58,7 @@ super + {1-9,0}
         bspc desktop -f 'focused:^{1-9,10}'
 
 super + shift + {1-9,0}
-        bspc node -d '^{1-9,10}' --follow
+        bspc node -d 'focused:^{1-9,10}' --follow
 
 # set the window state
 super + {t,shift + t,s,f}
