@@ -107,3 +107,6 @@ super + slash
 
 super + {_,shift + } Tab
         bspc desktop -f {next, prev}
+
+super + Delete
+        betterlockscreen -l blur 0.1

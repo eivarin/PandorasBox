@@ -2,4 +2,3 @@
 read -p "Type of xorg isntall (base|laptop|thinkpad):" type
 sudo pacman -Sy $(bash ./xorgPackages $type) $(cat pacman.stuff)
 bash aur
-sudo systemctl enable greetd

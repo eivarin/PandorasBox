@@ -1,3 +1,3 @@
 #!/bin/sh
-bash install
-bash link
+sudo systemctl enable greetd
+betterlockscreen -u /home/grk/PandorasBox/wp.png
