@@ -66,7 +66,9 @@ super + {t,shift + t,s,f}
 
 # # focus the node in the given direction
 super + {h,j,k,l}
-        bspc node -f {west,south,north,east}
+        dir={west,south,north,east}; \
+        bspc node -f $dir \
+            || bspc monitor -f $dir
 
 super + shift + {h,j,k,l}
 	dir={west,south,north,east}; \
