@@ -41,7 +41,7 @@ pickPartition(){
     if [[ $selection -eq $((${#parts[@]} -1)) ]] ; then
         return 0
     else
-        return $(( selection + 1))
+        return $(( selection + 2 ))
     fi
 }
 
@@ -63,7 +63,7 @@ pickPlaces(){
         pickDisk $mountName
         selDisk=${disks[$?]}
         pickPartition $mountName $selDisk
-        selPart="${selDisk}$?"
+        selPart=$(lsblk -lna -o NAME /dev/$selDisk | sed "${?}q;d")
         if grep $selPart <<< $(lsblk) > /dev/null ; then break; fi
     done
     fullPath="/dev/$selPart"
@@ -88,4 +88,3 @@ makeAndMount(){
 makeAndMount root /
 makeAndMount home /home
 makeAndMount esp /boot
-
