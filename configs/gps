@@ -12,6 +12,7 @@
 /home/grk/PandorasBox/configs/copyq         /home/grk/.config/copyq/copyq.conf
 /home/grk/PandorasBox/configs/bspwmrc       /home/grk/.config/bspwm/bspwmrc
 /home/grk/PandorasBox/configs/picom         /home/grk/.config/picom
+/home/grk/PandorasBox/configs/nvim          /home/grk/.config/nvim
 /home/grk/PandorasBox/configs/xinitrc       /home/grk/.xinitrc
 /home/grk/PandorasBox/configs/screens       /home/grk/.screens.sh
 /home/grk/PandorasBox/configs/.gitconfig    /home/grk/.gitconfig

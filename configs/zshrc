@@ -48,4 +48,5 @@ battery(){
 
 alias kysfag="poweroff"
 alias ll="ls -laF"
+alias vim="nvim"
 macchina
