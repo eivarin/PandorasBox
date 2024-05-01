@@ -31,7 +31,7 @@ super + {F11,F12}
 
 super + {_,shift + } {F1,F2,F3,Return}
         toggle={true,false}; \
-        {app=google-chrome-stable ; icon= ;\
+        {app=firefox ; icon=󰈹 ;\
         , app=code ; icon=󰨞 ;\
         , app=qtfm ; icon= ;\
         , app=kitty ; icon= ; \
