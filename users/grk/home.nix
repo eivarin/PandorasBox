@@ -1,6 +1,9 @@
 { config, pkgs, ... }:
 
 {
+  imports = [
+    ../../modules/home-manager
+  ]
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "grk";
@@ -72,23 +75,6 @@
     # EDITOR = "emacs";
   };
   
-  xsession.windowManager.bspwm = {
-    enable = true;
-    package = pkgs.bspwm;
-  };
-  
-  services = {
-    sxhkd = {
-      enable = true;
-      keybindings = {
-        "super + Return"	= "kitty -o allow_remote_control=yes";
-        "super + alt + {q,r}" 	= "bspc {quit,wm -r}";
-        "super + d"             = "rofi -modi drun,run -show drun -show-icons -theme ~/.config/rofi/config.rasi";
-        "super + {t,shift + t,s,f}" = "bspc node -t {\~tiled,\~pseudo_tiled,\~floating,\~fullscreen}";
-        "super + shift + Escape" = "pkill -USR1 -x sxhkd";
-      };
-    };
-  };
 
   programs.git = {
     enable = true;
