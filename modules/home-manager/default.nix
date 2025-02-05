@@ -4,5 +4,7 @@
     imports = [
         ./git
         ./rofi
+        ./bspwm
+        ./sxhkd
     ];
 }
