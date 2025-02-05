@@ -11,4 +11,4 @@ in {
         package = pkgs.bspwm;
       };
     };
-};
+}

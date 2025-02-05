@@ -11,10 +11,20 @@
   };
 
   outputs = { self, nixpkgs, home-manager, ... }@inputs: {
-    nixosConfigurations.default = nixpkgs.lib.nixosSystem {
-      specialArgs = {inherit inputs;};
+    nixosConfigurations.hermes = nixpkgs.lib.nixosSystem {
+      specialArgs = {
+        modulesConfig = {
+          modules = {
+            sxhkd.enable = true;
+            git.enable = true;
+            bspwm.enable = true;
+            rofi.enable = true;
+          };
+        };
+        inherit inputs;
+      };
       modules = [
-        ./hosts/hermes/configuration.nix
+        ./hosts/hermes/nixos-configuration.nix
         home-manager.nixosModules.default
       ];
     };

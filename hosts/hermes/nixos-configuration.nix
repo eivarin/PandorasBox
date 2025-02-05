@@ -10,9 +10,8 @@
       ./hardware-configuration.nix
       inputs.home-manager.nixosModules.default
       ../../users/grk
-      ../../modules
+      ../../modules/nixos
     ];
-
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -107,10 +106,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "24.11"; # Did you read the comment?
-  config.modules = {
-    sxhkd.enabled = true;
-    git.enabled = true;
-    bspwm.enabled = true;
-    rofi.enabled = true;
-  };
 }
