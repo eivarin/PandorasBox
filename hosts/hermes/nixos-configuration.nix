@@ -9,6 +9,7 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       inputs.home-manager.nixosModules.default
+      ../../users/grk
       ../../modules
     ];
 
@@ -16,7 +17,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "nixos"; # Define your hostname.
+  networking.hostName = "hermes"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -50,21 +51,6 @@
   services.xserver.xkb = {
     layout = "us";
     variant = "";
-  };
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.grk = {
-    isNormalUser = true;
-    description = "grk";
-    extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [];
-  };
-
-  home-manager = {
-    extraSpecialArgs = { inherit inputs; };
-    users = {
-      "grk" = import ./home.nix;
-    }; 
   };
 
   # Allow unfree packages
@@ -121,5 +107,10 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "24.11"; # Did you read the comment?
-
+  config.modules = {
+    sxhkd.enabled = true;
+    git.enabled = true;
+    bspwm.enabled = true;
+    rofi.enabled = true;
+  };
 }
