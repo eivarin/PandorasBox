@@ -71,7 +71,11 @@
     vscode.fhs
     firefox
     rofi
+    pkgs.pulseaudio
   ];
+
+  hardware.acpilight.enable = true;
+  services.pipewire.pulse.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -84,12 +88,16 @@
   # List services that you want to enable:
   services.xserver = {
     enable = true;
+    displayManager.lightdm = {
+      enable = true;
+      greeters.slick.enable = true;
+      greeters.gtk.enable = false;
+      background = /PandorasBox/wp.png ;
+    };
     windowManager.bspwm.enable = true;
   };
 
-  services.displayManager = {
-    defaultSession = "none+bspwm";
-  };
+  # services.displayManager.enable = false;
 
   services.libinput.touchpad = {
     tapping = true;
