@@ -6,5 +6,9 @@
         ./rofi
         ./bspwm
         ./sxhkd
+        ./polybar
+        ./nm-applet
+        ./picom
+        ./betterlockscreen
     ];
 }

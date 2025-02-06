@@ -9,7 +9,7 @@
   users.users.grk = {
     isNormalUser = true;
     description = "grk";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "video" ];
     packages = with pkgs; [];
   };
 

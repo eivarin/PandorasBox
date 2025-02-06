@@ -35,6 +35,7 @@
     #   echo "Hello, ${config.home.username}!"
     # '')
     pkgs.kitty
+    pkgs.pavucontrol
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -81,6 +82,13 @@
       init = { defaultBranch = "main"; };
     };
   };
+
+  systemd.user.targets.tray = {
+		Unit = {
+			Description = "Home Manager System Tray";
+			Requires = [ "graphical-session-pre.target" ];
+		};
+	};
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;

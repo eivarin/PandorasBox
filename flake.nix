@@ -19,6 +19,10 @@
             git.enable = true;
             bspwm.enable = true;
             rofi.enable = true;
+            polybar.enable = true;
+            nm-applet.enable = true;
+            picom.enable = true;
+            betterlockscreen.enable = true;
           };
         };
         inherit inputs;

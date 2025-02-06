@@ -17,77 +17,77 @@ XF86Audio{Play,Prev,Next}
 Print
         gscreenshot-cli -s -c
 
-super + d
-        rofi -modi drun,run -show drun -show-icons -theme ~/.config/rofi/config.rasi
+# super + d
+#         rofi -modi drun,run -show drun -show-icons -theme ~/.config/rofi/config.rasi
 
 super + shift + d
         SDESKTOP=$(bspc query -D --names | rofi -sep '\n' -dmenu -p "desktop" -theme ~/.config/rofi/config.rasi); bspc desktop -f $SDESKTOP || (bspc monitor -a $SDESKTOP && bspc desktop -f $SDESKTOP) && $(rofi -modi drun,run -show drun -show-icons -theme ~/.config/rofi/config.rasi)
 
-super + Return
-        kitty -o allow_remote_control=yes
+# super + Return
+#         kitty -o allow_remote_control=yes
 
 super + {F11,F12}
         {spotify-launcher,discord}
 
-super + {_,shift + } {F1,F2,F3,Return}
-        toggle={true,false}; \
-        {app=firefox ; icon=󰈹 ;\
-        , app=code ; icon=󰨞 ;\
-        , app=qtfm ; icon= ;\
-        , app=kitty ; icon= ; \
-        } \
-        [[ "$toggle" = true ]] || (NNAME=$(rofi -dmenu -p "Name" -theme ~/.config/rofi/config.rasi); bspc monitor -a "$icon-$NNAME" && bspc desktop -f "$icon-$NNAME") ;\
-        $app
+# super + {_,shift + } {F1,F2,F3,Return}
+#         toggle={true,false}; \
+#         {app=firefox ; icon=󰈹 ;\
+#         , app=code ; icon=󰨞 ;\
+#         , app=qtfm ; icon= ;\
+#         , app=kitty ; icon= ; \
+#         } \
+#         [[ "$toggle" = true ]] || (NNAME=$(rofi -dmenu -p "Name" -theme ~/.config/rofi/config.rasi); bspc monitor -a "$icon-$NNAME" && bspc desktop -f "$icon-$NNAME") ;\
+#         $app
 
 super + p
         copyq toggle
 
-super + shift + Escape
-	pkill -USR1 -x sxhkd
+# super + shift + Escape
+# 	pkill -USR1 -x sxhkd
 
 # quit/restart bspwm
-super + alt + {q,r}
-        bspc {quit,wm -r}
+# super + alt + {q,r}
+#         bspc {quit,wm -r}
 
 # close and kill
-super + shift + {q,e}
-        bspc node -{c,k}
+# super + shift + {q,e}
+#         bspc node -{c,k}
 
 # focus or send to the given desktop
-super + {1-9,0}
-        bspc desktop -f 'focused:^{1-9,10}'
+# super + {1-9,0}
+#         bspc desktop -f 'focused:^{1-9,10}'
 
-super + shift + {1-9,0}
-        bspc node -d 'focused:^{1-9,10}' --follow
+# super + shift + {1-9,0}
+#         bspc node -d 'focused:^{1-9,10}' --follow
 
 # set the window state
-super + {t,shift + t,s,f}
-        bspc node -t {\~tiled,\~pseudo_tiled,\~floating,\~fullscreen}
+# super + {t,shift + t,s,f}
+#         bspc node -t {\~tiled,\~pseudo_tiled,\~floating,\~fullscreen}
 
 # # focus the node in the given direction
-super + {h,j,k,l}
-        dir={west,south,north,east}; \
-        bspc node -f $dir \
-            || bspc monitor -f $dir
+# super + {h,j,k,l}
+#         dir={west,south,north,east}; \
+#         bspc node -f $dir \
+#             || bspc monitor -f $dir
 
-super + shift + {h,j,k,l}
-	dir={west,south,north,east}; \
-	bspc node -s "$dir.local" --follow \
-	    || bspc node -m "$dir" --follow
+# super + shift + {h,j,k,l}
+# 	dir={west,south,north,east}; \
+# 	bspc node -s "$dir.local" --follow \
+# 	    || bspc node -m "$dir" --follow
 
-super + control + {h,j,k,l}
-	dir={west,south,north,east}; \
-	    bspc desktop -m "$dir.local" --follow
+# super + control + {h,j,k,l}
+# 	dir={west,south,north,east}; \
+# 	    bspc desktop -m "$dir.local" --follow
 
-# # expand a window by moving one of its side outward
-super + alt + {h,j,k,l}
-        bspc node -z {left -20 0,bottom 0 20,top 0 -20,left 20 0}
+# # # expand a window by moving one of its side outward
+# super + alt + {h,j,k,l}
+#         bspc node -z {left -20 0,bottom 0 20,top 0 -20,left 20 0}
 
-super + alt + {Left,Down,Up,Right}
-        bspc node -z {left -20 0,bottom 0 20,bottom 0 -20, left 20 0}
+# super + alt + {Left,Down,Up,Right}
+#         bspc node -z {left -20 0,bottom 0 20,bottom 0 -20, left 20 0}
 
-super + v
-        bspc node @parent -R 90 
+# super + v
+#         bspc node @parent -R 90 
         
 super + comma
         DESKTOPS=$(bspc query -D --names); PICKED=$(echo $DESKTOPS | rofi -sep '\n' -dmenu -p "go to desktop" -theme ~/.config/rofi/config.rasi); echo $DESKTOPS | grep "^$PICKED$" && bspc desktop -f $PICKED || bspc monitor -a $PICKED && bspc desktop -f $PICKED
@@ -105,8 +105,8 @@ super + BackSpace
 super + slash
         rofi -show window -show-icons -theme ~/.config/rofi/config.rasi
 
-super + {_,shift + } Tab
-        bspc desktop -f {next, prev}
+# super + {_,shift + } Tab
+#         bspc desktop -f {next, prev}
 
 super + Delete
         betterlockscreen -l blur 0.1
