@@ -6,11 +6,13 @@
 
 {
   # Define a user account. Don't forget to set a password with ‘passwd’.
+  programs.zsh.enable = true;
   users.users.grk = {
     isNormalUser = true;
     description = "grk";
     extraGroups = [ "networkmanager" "wheel" "video" ];
     packages = with pkgs; [];
+    shell = pkgs.zsh;
   };
 
   home-manager = {

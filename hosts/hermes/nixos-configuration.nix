@@ -17,6 +17,8 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.initrd.network.ssh.enable = true;
 
+  networking.firewall.checkReversePath = false;
+
   fileSystems."/nfs" = {
     device = "10.0.2.8:/all";
     fsType = "nfs";
@@ -90,14 +92,11 @@
     enable = true;
     displayManager.lightdm = {
       enable = true;
-      greeters.slick.enable = true;
-      greeters.gtk.enable = false;
-      background = /PandorasBox/wp.png ;
+      greeters.enso.enable = true;
+      background = ../../wp.png ;
     };
     windowManager.bspwm.enable = true;
   };
-
-  # services.displayManager.enable = false;
 
   services.libinput.touchpad = {
     tapping = true;

@@ -23,6 +23,9 @@
             nm-applet.enable = true;
             picom.enable = true;
             betterlockscreen.enable = true;
+            zsh.enable = true;
+            kitty.enable = true;
+            macchina.enable = true;
           };
         };
         inherit inputs;

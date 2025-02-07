@@ -10,5 +10,8 @@
         ./nm-applet
         ./picom
         ./betterlockscreen
+        ./zsh
+        ./kitty
+        ./macchina
     ];
 }

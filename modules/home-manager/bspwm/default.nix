@@ -38,6 +38,9 @@ in {
         pointer_action1           = "move";
         pointer_action2           = "resize_corner";
       };
+      extraConfig = ''
+        betterlockscreen -w
+      '';
     };
   };
 }
