@@ -24,7 +24,8 @@ in {
                 "super + shift + Escape" = "pkill -USR1 -x sxhkd";
                 "super + {1-9,0}" = "bspc desktop -f 'focused:^{1-9,10}'";
                 "super + shift + {1-9,0}" = "bspc node -d 'focused:^{1-9,10}' --follow";
-                "super + {_,shift + } {F1,F2,F3,Return}" = "bash ~/.config/sxhkd/bspcExtra.sh switchToWorkspace {true,false} {firefox,code,qtfm,kitty} {󰈹,󰨞,,}";
+                "super + {_,shift + } {F1,F2,F3,Return}" = "bash ~/.config/sxhkd/bspcExtra.sh switchToWorkspace {true,false} {zen,code,qtfm,kitty} {󰈹,󰨞,,}";
+                "super + {F11,F12}" = "{spotify-launcher,discord}";
                 "super + {h,j,k,l}" = "bash ~/.config/sxhkd/bspcExtra.sh focusToDir {west,south,north,east}";
                 "super + shift + {h,j,k,l}" = "bash ~/.config/sxhkd/bspcExtra.sh windowToDir {west,south,north,east}";
                 "super + control + {h,j,k,l}" = "bash ~/.config/sxhkd/bspcExtra.sh workspaceToDir {west,south,north,east}";
