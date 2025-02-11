@@ -10,6 +10,7 @@ in {
             htop
             iproute2
             toybox
+            gnugrep
             ncdu
             direnv
         ];
