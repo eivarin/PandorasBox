@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, inputs, ... }:
+{ pkgs, inputs, ... }:
 
 {
   imports =
@@ -19,7 +19,7 @@
 
   networking.firewall.checkReversePath = false;
 
-  fileSystems."/nfs" = {
+  fileSystems."/mnt/nfs" = {
     device = "10.0.2.8:/all";
     fsType = "nfs";
     options = [ "x-systemd.automount" "noauto" ];
@@ -55,12 +55,6 @@
     LC_TIME = "pt_PT.UTF-8";
   };
 
-  # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "us";
-    variant = "";
-  };
-
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
@@ -71,10 +65,11 @@
   #  wget
     git
     vscode.fhs
-    firefox
-    rofi
-    pkgs.pulseaudio
+    nixd
+    pulseaudio
   ];
+
+  nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
 
   hardware.acpilight.enable = true;
   services.pipewire.pulse.enable = true;
@@ -90,6 +85,10 @@
   # List services that you want to enable:
   services.xserver = {
     enable = true;
+    xkb = {
+      layout = "us,pt";
+      options = "eurosign:e, compose:menu, grp:alt_space_toggle";
+    };
     displayManager.lightdm = {
       enable = true;
       greeters.enso.enable = true;
