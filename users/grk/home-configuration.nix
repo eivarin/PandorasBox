@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, system, ... }:
+{ pkgs, inputs, hostOptions, ... }:
 
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -11,6 +11,8 @@
       allowUnfreePredicate = (_: true);
     };
   };
+
+  fonts.fontconfig.enable = true;
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
   # introduces backwards incompatible changes.
@@ -26,7 +28,7 @@
     pkgs.kitty
     pkgs.pavucontrol
     pkgs.discord
-    inputs.zen-browser.packages."${system}".beta
+    inputs.zen-browser.packages."${hostOptions.system}".beta
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage

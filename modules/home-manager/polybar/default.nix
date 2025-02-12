@@ -15,6 +15,8 @@ in {
             zscroll
             xtitle
             nerd-fonts.hurmit
+            pkgs.polybarFull
+            toybox
         ];
         # home.file.".config/polybar/scripts" = {
         #     source = ./scripts;
@@ -23,7 +25,7 @@ in {
         # };
         services.polybar = {
             enable = true;
-            script = "polybar Main &";
+            script = "sleep 1; polybar Main &";
             package = pkgs.polybarFull;
         };
         systemd.user.services.polybar = {

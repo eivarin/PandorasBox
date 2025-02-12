@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, inputs, modulesConfig, ... }:
+{ pkgs, inputs, config, ... }:
 
 {
   # Define a user account. Don't forget to set a password with ‘passwd’.
@@ -11,17 +11,22 @@
     isNormalUser = true;
     description = "grk";
     extraGroups = [ "networkmanager" "wheel" "video" ];
-    packages = with pkgs; [];
+    # packages = with pkgs; [];
     shell = pkgs.zsh;
   };
 
   home-manager = {
     extraSpecialArgs = { 
-      inherit inputs; 
-      inherit modulesConfig;
+      inherit inputs;
+      hostOptions = config.hostOptions;
     };
     users = {
-      "grk" = import ./home.nix;
+      "grk" = {
+        imports = [
+          ../../modules/home-manager
+          ./home-configuration.nix
+        ];
+      };
     }; 
   };
 }
