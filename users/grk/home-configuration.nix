@@ -24,12 +24,11 @@
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  home.packages = [
-    pkgs.kitty
-    pkgs.pavucontrol
-    pkgs.discord
-    inputs.zen-browser.packages."${hostOptions.system}".beta
-  ];
+  # home.packages = [
+  #   pkgs.pavucontrol
+  #   pkgs.discord
+  #   inputs.zen-browser.packages."${hostOptions.system}".beta
+  # ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.

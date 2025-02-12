@@ -24,12 +24,16 @@
         ./copyq
         ./dunst
         ./blueman-applet
+        ./gh
+
+        ./pkgs
     ];
     config = {
         modules = {
             zsh.enable = true;
             git.enable = true;
             macchina.enable = true;
+            gh.enable = true;
 
             sxhkd.enable = hostOptions.EnableGUI;
             bspwm.enable = hostOptions.EnableGUI;
