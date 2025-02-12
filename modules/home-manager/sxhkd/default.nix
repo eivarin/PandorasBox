@@ -20,6 +20,7 @@ in {
                 "super + shift + {q,e}" = "bspc node -{c,k}";
                 "super + alt + {q,r}" 	= "bspc {quit,wm -r}";
                 "super + d"             = "rofi -modi drun,run -show drun -show-icons -theme ~/.config/rofi/config.rasi";
+                "super + p"             = "copyq toggle";
                 "super + {t,shift + t,s,f}" = "bspc node -t {\~tiled,\~pseudo_tiled,\~floating,\~fullscreen}";
                 "super + shift + Escape" = "pkill -USR1 -x sxhkd";
                 "super + {1-9,0}" = "bspc desktop -f 'focused:^{1-9,10}'";

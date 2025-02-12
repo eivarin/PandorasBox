@@ -1,4 +1,4 @@
-{ pkgs, lib, config, ... }:
+{ pkgs, lib, config, hostOptions, ... }:
 
 with lib;
 let cfg = config.modules.bspwm;
@@ -6,22 +6,12 @@ let cfg = config.modules.bspwm;
 in {
   options.modules.bspwm = { enable = mkEnableOption "bspwm"; };
   config = mkIf cfg.enable {
-    home.file.".xinitrc" = {
-      text = ''
-        #!/bin/sh
-        exec bspwm
-      '';
-    };
     xsession.windowManager.bspwm = {
       enable = true;
       package = pkgs.bspwm;
-      monitors = {
-        eDP-1 = [
-          "󰣇" 
-          "󰙯"
-          ""
-        ];
-      };
+      monitors = mergeAttrsList (map (monitor: {
+        "${monitor.name}" = monitor.desktops;
+      }) hostOptions.monitors);
       settings = {        
         focus_follows_pointer     = true;
         pointer_follows_monitor   = true;
@@ -38,6 +28,9 @@ in {
         pointer_action1           = "move";
         pointer_action2           = "resize_corner";
       };
+      extraConfigEarly = ''
+        polybar --reload Main &
+      '';
       extraConfig = ''
         betterlockscreen -w
       '';
