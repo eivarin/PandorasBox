@@ -1,4 +1,4 @@
-{ pkgs, lib, config, ... }:
+{ ... }:
 {
   services.polybar.settings = {
     "template/battery" = {
@@ -7,18 +7,27 @@
       full-at = 98;
       format = {
         charging = {
-          text = "%{T3}<animation-charging>%{T-} <label-charging>";
+          text = "%{T3} <animation-charging>%{T-}<label-charging>";
           overline = "\${colors.primary-20}";
+        };
+        discharging = {
+          text = "%{T3} <ramp-capacity>%{T-}<label-discharging>️";
+          overline = "\${colors.primary-20}";
+        };
+        full = {
+          text = "%{T3} 󰁹%{T-}<label-full>️";
+          overline = "\${colors.primary-20}";
+        };
+      };
+      label = {
+        charging = {
           padding = 1;
         };
         discharging = {
-          text = "%{T3}<ramp-capacity>%{T-} <label-discharging>️";
-          overline = "\${colors.primary-20}";
           padding = 1;
         };
-        full.prefix = {
-          text = "%{T3}󰁹%{T-} ";
-          foreground = "\${colors.foreground-alt}";
+        full = {
+          padding = 1;
         };
       };
       ramp-capacity = {

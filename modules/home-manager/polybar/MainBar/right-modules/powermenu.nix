@@ -23,31 +23,11 @@
       [
         {
           text = "reboot";
-          exec = "#powermenu.open.1";
+          exec = "systemctl reboot";
         }
         {
           text = "power off";
-          exec = "#powermenu.open.2";
-        }
-      ]
-      [
-        {
-          text = "cancel";
-          exec = "#powermenu.open.0";
-        }
-        {
-          text = "reboot";
-          exec = "sudo reboot";
-        }
-      ]
-      [
-        {
-          text = "power off";
-          exec = "sudo poweroff";
-        }
-        {
-          text = "cancel";
-          exec = "#powermenu.open.0";
+          exec = "systemctl poweroff";
         }
       ]
     ];

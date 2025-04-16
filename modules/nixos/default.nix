@@ -4,8 +4,11 @@
     imports = [
         ./blueman
         ./boot
+        ./dconf
         ./fileSystems
         ./hardware
+	    ./hyprland
+        ./greetd
         ./libinput
         ./locale
         ./networking

@@ -10,8 +10,11 @@ in {
       source = ./copyq;
       force = true;
     };
+    home.packages = with pkgs; [
+      copyq
+    ];
     services.copyq = {
-      enable = true;
+      enable = false;
     };
   };
 }
