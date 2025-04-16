@@ -1,4 +1,0 @@
-#!/bin/sh
-bash install
-bash link
-bash configure
