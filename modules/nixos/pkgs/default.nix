@@ -6,5 +6,6 @@
     git
     nixd
     pulseaudio
+    greetd.regreet
   ];
 }

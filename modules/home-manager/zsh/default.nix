@@ -13,6 +13,7 @@ in {
             gnugrep
             ncdu
             direnv
+            jq
         ];
         programs.zsh = {
             enable = true;
@@ -38,8 +39,15 @@ in {
                 }
             ];
             initExtra = ''
+                if [ -d "$HOME/.scripts" ] ; then
+                    PATH="$HOME/.scripts:$PATH"
+                fi
                 macchina
             '';
+            shellAliases = {
+                poweroff = "systemctl poweroff";
+                reboot = "systemctl reboot";
+            };
         };
     };
 }

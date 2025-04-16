@@ -28,9 +28,6 @@ in {
         pointer_action1           = "move";
         pointer_action2           = "resize_corner";
       };
-      extraConfigEarly = ''
-        polybar --reload Main &
-      '';
       extraConfig = ''
         betterlockscreen -w
       '';

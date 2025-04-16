@@ -4,6 +4,13 @@
   home.packages = with pkgs; [
     pavucontrol
     discord
-    inputs.zen-browser.packages."${hostOptions.system}".beta
+    spotify
+    obsidian
+    inputs.zen-browser.packages."${hostOptions.system}".default
+    font-awesome
+    tldr
+    google-chrome
+    chromium
+    multiviewer-for-f1
   ];
 }

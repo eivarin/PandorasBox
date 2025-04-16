@@ -18,11 +18,13 @@
   home-manager = {
     extraSpecialArgs = { 
       inherit inputs;
+      monitors = config.monitors;
       hostOptions = config.hostOptions;
     };
     users = {
       "grk" = {
         imports = [
+          ../../options
           ../../modules/home-manager
           ./home-configuration.nix
         ];
