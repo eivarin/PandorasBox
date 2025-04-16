@@ -1,5 +1,0 @@
-[Desktop Entry]
-Name=X
-Comment=Binary space partitioning window manager
-Exec=zsh --login -c startx
-Type=Application
