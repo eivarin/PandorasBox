@@ -17,6 +17,13 @@
       hermes = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
         modules = [
+          ./hosts/ares/nixos-configuration.nix
+          home-manager.nixosModules.default
+        ];
+      };
+      ares = nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs; };
+        modules = [
           ./hosts/hermes/nixos-configuration.nix
           home-manager.nixosModules.default
         ];

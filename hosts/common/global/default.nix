@@ -4,7 +4,7 @@
     inputs.home-manager.nixosModules.home-manager
     ./locale.nix
     ./network.nix
-    ./networkFS.nix
+    # ./networkFS.nix
     ./nix.nix
     ./openssh.nix
     ./pkgs.nix

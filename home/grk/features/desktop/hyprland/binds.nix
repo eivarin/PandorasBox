@@ -59,7 +59,7 @@ in
       "ALT, f, togglefloating"
       "$mod, f, fullscreen, 0"
       "$mod SHIFT, f, fullscreen, 1"
-      ", Print, exec, grimblast copy area"
+      '', Print, exec, grim -g "$(slurp -d)" - | wl-copy''
       "$mod, p, execr, wmBinds ChangeMonitorSettings"
 
       "$mod, Escape, exec, nmcli c show --active | grep hermes-epb && nmcli c down hermes-epb || nmcli c up hermes-epb"

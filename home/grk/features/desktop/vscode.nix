@@ -1,8 +1,8 @@
 { lib, config, pkgs, ... }:
 
 {
-    home.packages = with pkgs; [
-        nerd-fonts.fira-code
-        vscode-fhs
-    ];
+  home.packages = with pkgs; [
+    nerd-fonts.fira-code
+    vscode-fhs
+  ];
 }
