@@ -1,10 +1,13 @@
 { ... }:
 {
   imports = [
+    ./atuin.nix
     ./macchina
     ./gh.nix
     ./git.nix
-    ./zsh.nix
+    ./kube.nix
+    ./mise.nix
     ./pkgs.nix
+    ./zsh.nix
   ];
 }

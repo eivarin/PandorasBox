@@ -4,7 +4,9 @@
     exec = [];
     exec-once = [
       "sleep 1 && waybar"
-      "copyq --start-server" 
+      "wl-paste --type text --watch cliphist store"
+      "wl-paste --type image --watch cliphist store"
+      "bitwarden-resize-script"
     ];
   };
 }

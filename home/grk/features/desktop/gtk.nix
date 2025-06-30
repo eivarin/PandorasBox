@@ -1,19 +1,17 @@
-{ lib, config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   home.packages = with pkgs; [
     nautilus
+    vimix-cursors
+    phinger-cursors
   ];
   home.pointerCursor = {
-    name = "Vimix-cursors";
-    package = pkgs.vimix-cursors;
+    name = "phinger-cursors-dark";
+    package = pkgs.phinger-cursors;
     size = 16;
     gtk.enable = true;
-    hyprcursor = {
-      enable = true;
-    };
   };
-  
   gtk = {
     enable = true;
     theme = {

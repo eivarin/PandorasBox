@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ pkgs, config, lib, options, ... }:
+{ pkgs, config, ... }:
 
 {
   # imports = [
@@ -15,7 +15,7 @@
     users.grk = {
       isNormalUser = true;
       description = "grk";
-      extraGroups = [ "networkmanager" "wheel" "video" ];
+      extraGroups = [ "networkmanager" "wheel" "video" "docker" "dialout" ];
       shell = pkgs.zsh;
       packages = [ pkgs.home-manager ];
     };

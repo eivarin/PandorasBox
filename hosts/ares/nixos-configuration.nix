@@ -27,7 +27,7 @@
     # ../../options
   ];
 
-  hostname = "hermes";
+  hostname = "ares";
   systemArch = "x86_64-linux";
 
 }

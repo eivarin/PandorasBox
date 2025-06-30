@@ -12,31 +12,38 @@
     waybar-untested.url = "github:pol-rivero/Waybar/";
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs: {
-    nixosConfigurations = {
-      hermes = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs; };
-        modules = [
-          ./hosts/ares/nixos-configuration.nix
-          home-manager.nixosModules.default
-        ];
+  outputs =
+    {
+      self,
+      nixpkgs,
+      home-manager,
+      ...
+    }@inputs:
+    {
+      nixosConfigurations = {
+        hermes = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs; };
+          modules = [
+            ./hosts/hermes/nixos-configuration.nix
+            home-manager.nixosModules.default
+          ];
+        };
+        ares = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs; };
+          modules = [
+            ./hosts/ares/nixos-configuration.nix
+            home-manager.nixosModules.default
+          ];
+        };
       };
-      ares = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs; };
-        modules = [
-          ./hosts/hermes/nixos-configuration.nix
-          home-manager.nixosModules.default
-        ];
-      };
-    };
-    homeConfigurations = {
-      "grk@hermes" = home-manager.lib.homeManagerConfiguration {
-        modules = [./home/grk/hermes.nix];
-        pkgs = import nixpkgs { system = "x86_64-linux"; };
-        extraSpecialArgs = {
-          inherit inputs;
+      homeConfigurations = {
+        "grk@hermes" = home-manager.lib.homeManagerConfiguration {
+          modules = [ ./home/grk/hermes.nix ];
+          pkgs = import nixpkgs { system = "x86_64-linux"; };
+          extraSpecialArgs = {
+            inherit inputs;
+          };
         };
       };
     };
-  };
 }

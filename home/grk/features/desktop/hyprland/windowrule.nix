@@ -7,4 +7,7 @@
     "workspace special:F12, class:discord"
     "float, class:com.github.hluk.copyq"
   ];
+  wayland.windowManager.hyprland.settings.windowrulev2 = [
+    "suppressevent maximize, class:^(zen)$"
+  ];
 }

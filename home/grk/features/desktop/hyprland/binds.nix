@@ -23,7 +23,7 @@ in
       "$mod, q, exec, kitty"
       "$mod, RETURN, exec, kitty"
 
-      "$mod, d, exec, wofi  --show drun,run -I -m -G"
+      "$mod, d, exec, wofi  --show drun -I -m -G"
 
       "$mod SHIFT, q, killactive"
       "$mod SHIFT, e, forcekillactive"
@@ -34,8 +34,8 @@ in
 
       "$mod, m, exit"
       "ALT, l, exec, hyprlock"
-      "$mod, v, exec, copyq toggle"
-      # "$mod, v, exec, cliphist list | rofi -dmenu | cliphist decode | wl-copy"
+      # "$mod, v, exec, copyq toggle"
+      "$mod, v, exec, cliphist-wofi-img"
 
       "$mod, Left, movefocus, l"
       "$mod, Down, movefocus, d"

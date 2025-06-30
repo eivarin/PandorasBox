@@ -5,6 +5,7 @@
     ./waybar
     ./blueman-applet.nix
     ./dunst.nix
+    ./games.nix
     ./gtk.nix
     ./hypridle.nix
     ./hyprlock.nix

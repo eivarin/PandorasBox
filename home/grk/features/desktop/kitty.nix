@@ -1,9 +1,9 @@
-{ pkgs, lib, config, ... }:
+{ pkgs, ... }:
 
 {
   programs.kitty = {
     enable = true;
-    font ={
+    font = {
       name = "Hurmit Nerd Font Mono";
       package = pkgs.nerd-fonts.hurmit;
     };
@@ -12,5 +12,5 @@
     settings = {
       enable_audio_bell = false;
     };
-    };
+  };
 }

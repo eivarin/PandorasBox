@@ -9,6 +9,8 @@
         ncdu
         direnv
         jq
+        fluxcd
+        fzf
     ];
     programs.zsh = {
         enable = true;
@@ -30,10 +32,11 @@
                 src = pkgs.zsh-syntax-highlighting.src;
             }
         ];
-        initExtra = ''
+        initContent = ''
             if [ -d "$HOME/.scripts" ] ; then
                 PATH="$HOME/.scripts:$PATH"
             fi
+            . <(flux completion zsh)
             macchina
         '';
         shellAliases = {

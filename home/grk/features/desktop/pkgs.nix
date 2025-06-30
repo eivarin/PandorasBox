@@ -1,4 +1,9 @@
-{ pkgs, inputs, config, ... }:
+{
+  pkgs,
+  inputs,
+  config,
+  ...
+}:
 
 {
   home.packages = with pkgs; [
@@ -13,5 +18,9 @@
     chromium
     multiviewer-for-f1
     kitty
+    lens
+    orca-slicer
+    freecad-wayland
+    gimp3
   ];
 }

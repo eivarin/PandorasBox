@@ -6,6 +6,7 @@
     ./binds.nix
     ./decoration.nix
     ./dwindle.nix
+    ./env.nix
     ./execs.nix
     ./general.nix
     ./gestures.nix
