@@ -1,40 +1,30 @@
-{ ... }:
+{ config, ... }:
 {
   programs.waybar.settings.mainbar = {
     "hyprland/workspaces" = {
       active-only = false;
       show-special = true;
       special-visible-only = true;
-      # all-outputs = false;
+      format-window-separator = "";
+      sort-by = "number";
       format = "{icon}{windows}";
-      sort-by = "id";
       workspace-taskbar = {
         enable = true;
-        icon-size = 16;
-        
+        icon-size = config.waybar.barHeight - 12;
+        format = if config.waybar.compactMode then "{icon}" else "{icon} {title:.20}";
+        update-active-window = true;
+        on-click-window = "wmBinds SwitchToWindow {address} {button}";
       };
       format-icons = {
-        empty = "󱄅";
-        default = "";
+        default = ":"; 
+        empty = "";
+        special = "";
       };
-      # persistent-workspaces = {};
-      # show-special = false;
-      # window-rewrite = {
-      #   "zen" = "󰈹";
-      #   "Spotify" = "";
-      #   "discord" = "󰙯";
-      #   "kitty" = "";
-      #   "code" = "󰨞";
-      # };
-      # window-rewrite-default = "?";
-      # format-window-separator = "<space>";
-      # move-to-monitor = false;
-      # ignore-workspaces = [];
     };
     "hyprland/language" = {
       format = "{}";
-      format-pt = "PT";
-      format-en = "US";
+      format-pt = "🇵🇹";
+      format-en = "🇺🇸";
     };
   };
 }

@@ -1,18 +1,8 @@
 { ... }:
 {
   programs.waybar.settings.mainbar = {
-    "group/clock" = {
-      orientation = "inherit";
-      modules = [
-        "custom/clockIcon"
-        "clock"
-      ];
-    };
-    "custom/clockIcon" = {
-      format = "";
-    };
     clock = {
-      format = "{:%H:%M}";
+      format = " {:%H:%M}";
       format-alt = "{:%A, %B %d, %Y (%R)}";
       tooltip-format= "<tt><small>{calendar}</small></tt>";
       calendar = {

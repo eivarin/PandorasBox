@@ -1,0 +1,184 @@
+window#waybar > box > box > widget > *,
+#workspaces > button,
+#cpu,
+#memory,
+#disk,
+#powermenu .module{
+  background: alpha(#222222, 0.6);
+  border-radius: 5px;
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.6);
+  margin: 0 3px;
+  padding : 0 4px;
+}
+
+window#waybar > box > box > widget > #workspaces,
+window#waybar > box > box > widget > #perf,
+window#waybar > box > box > widget > #powermenu{
+  background: rgba(0, 0, 0, 0);
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0);
+  margin: 0;
+  padding: 0;
+}
+
+
+
+/* WORKSPACES SPECIFIC */
+#workspaces {
+  margin: 0;
+}
+
+#workspaces > button {
+  border: 1px solid rgba(0, 0, 0, 0);
+}
+
+#workspaces > button.active {
+  border-color: #008cff;
+}
+
+#workspaces > button.special {
+  border-color: #00ff37;
+}
+
+#workspaces .taskbar-window {
+  margin: 3px 0px 3px 2px;
+  padding: 2px;
+  border-radius: 5px;
+}
+
+#workspaces button.special .taskbar-window {
+  margin-left: 0;
+}
+
+#workspaces .taskbar-window label {
+  margin-right: 2.5px;
+}
+
+#workspaces .taskbar-window.active {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* POWERMENU SPECIFIC */
+
+#custom-poweroff {
+  color: #ff0000;
+}
+
+#custom-reboot {
+  color: #ffff00;
+  padding: 0 5px;
+}
+#custom-lock {
+  color: #0000ff;
+}
+
+/* BATTERY SPECIFIC */
+#battery {
+  border: 1px solid rgba(0, 0, 0, 0);
+}
+
+#battery.full {
+  border-color: #00ff00;
+}
+#battery.good {
+  border-color: #b3ff00;
+}
+#battery.medium {
+  border-color: #ffff00;
+}
+#battery.warning {
+  border-color: #ff5e00;
+}
+#battery.critical {
+  border-color: #ff0000;
+}
+
+@keyframes blinkCharging {
+    to {
+        color: #ffffff;
+    }
+}
+
+#battery.charging {
+  color: #008cff;
+  animation-name: blinkCharging;
+  animation-duration: 1s;
+  animation-timing-function: steps(12);
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+@keyframes blinkNotCharging {
+    to {
+        border-color: rgba(0, 0, 0, 0);
+        color: #ffffff;
+    }
+}
+
+#battery.critical:not(.charging) {
+    border-color: #ff0000;
+    color: #ff0000;
+    animation-name: blinkNotCharging;
+    animation-duration: 1s;
+    animation-timing-function: steps(12);
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+/* PULSEAUDIO SPECIFIC */
+
+#pulseaudio {
+  border: 1px solid rgba(0, 0, 0, 0);
+}
+
+#pulseaudio.muted {
+  color: #ff0000;
+}
+
+#pulseaudio.bluetooth {
+  border-color: #008cff;
+}
+
+/* NETWORK SPECIFIC */
+
+#network {
+  border: 1px solid #00ff00;
+}
+
+#network.disconnected {
+  border-color: rgba(0, 0, 0, 0);
+}
+
+#network.disabled {
+  border-color: rgba(255, 0, 0, 0.5);
+}
+
+/* TOOLTIP SPECIFIC */
+tooltip {
+  background: alpha(#222222, 1);
+  border-radius: 5px;
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.6);
+  margin: 0 3px;
+}
+
+
+
+/* .modules-left {
+    padding: 0px;
+    margin:10 0 5 10;
+    border-radius:10px;
+    background: alpha(#222222,.6);
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, .6);
+}
+.modules-center {
+    padding: 0px;
+    margin:10 0 5 0;
+    border-radius:10px;
+    background: alpha(#222222,.6);
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, .6);
+}
+.modules-right {
+    padding:0px;
+    margin: 10 10 5 0;
+    border-radius:10px;
+    background: alpha(#222222,.6);
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, .6);
+} */

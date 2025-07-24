@@ -59,9 +59,9 @@ ManageVPNs(){
 }
 
 CycleKeyboardLayout(){
-  keyboard="at-translated-set-2-keyboard"
+  keyboard="$(hyprctl devices -j | jq -r '.keyboards[] | select(.main).name')"
   hyprctl switchxkblayout "$keyboard" next
-  value=$(hyprctl devices | grep -i "$keyboard" -A 2 | tail -n1 | cut -f3,4 -d' ')
+  value=$(hyprctl devices -j | jq -r ".keyboards[] | select(.main).active_keymap")
   if [[ "$value" == "English (US)" ]]; then
     flag="🇺🇸"
   elif [[ "$value" == "Portuguese" ]]; then
@@ -72,6 +72,22 @@ CycleKeyboardLayout(){
   notify-send "${flag}Layout changed to ${value}${flag}"
 }
 
+SwitchToWindow(){
+  address=$1
+  button=$2
+  if [ "$button" -eq 1 ]; then
+      # Left click: focus window. The cursor:no_warps lines are optional.
+      hyprctl keyword cursor:no_warps true
+      hyprctl dispatch focuswindow address:"$address"
+      hyprctl keyword cursor:no_warps false
+  # elif [ $button -eq 2 ]; then
+  #     # Middle click: maximize window
+  #     # TODO: Use the corresponding hyprctl dispatch command. I don't know what would 'maximize' mean in a tiling window manager like hyprland
+  elif [ "$button" -eq 3 ]; then
+      # Right click: close window
+      hyprctl dispatch closewindow address:"$address"
+  fi
+}
 
 subargs=("${@:2}")
 # echo $subargs
@@ -90,6 +106,9 @@ case "$1" in
     ;;
   CycleKeyboardLayout)
     CycleKeyboardLayout
+    ;;
+  SwitchToWindow)
+    SwitchToWindow "${subargs[@]}"
     ;;
 
   *)

@@ -13,6 +13,7 @@
     ./kitty.nix
     ./nm-applet.nix
     ./pkgs.nix
+    ./playerctld.nix
     ./vscode.nix
     ./wofi.nix
     ../../../../options/desktop

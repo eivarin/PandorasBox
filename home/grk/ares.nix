@@ -49,4 +49,26 @@
       workspace = null;
     }
   ];
+
+    waybar = {
+    rightModules = [
+      "network#eno1"
+      # "network#wlp4s0"
+      "group/perf"
+      "pulseaudio"
+      "group/powermenu"
+    ];
+    # leftModules = [];
+    # centerModules = [];
+    networkInterfaces = {
+      eno1 = "ethernet";
+      # wlp12s0 = "wifi";
+    };
+    # batteryInterfaces = [
+    #   "BAT0"
+    #   "BAT1"
+    # ];
+    compactMode = false; # Set to true if you want a more compact Waybar
+    barHeight = 26;
+  };
 }

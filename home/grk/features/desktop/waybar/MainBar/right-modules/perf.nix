@@ -4,52 +4,22 @@
     "group/perf" = {
       orientation = "inherit";
       modules = [
-        "group/cpuGroup"
-        "group/memoryGroup"
-        "group/diskGroup"
+        "cpu"
+        "memory"
+        "disk"
       ];
       drawer = {
         click-to-reveal = false;
       };
     };
-    "group/cpuGroup" = {
-      orientation = "inherit";
-      modules = [
-        "custom/cpuIcon"
-        "cpu"
-      ];
-    };
-    "custom/cpuIcon" = {
-      format = "";
-    };
     cpu = {
-      format = "{usage}%";
-    };
-    "group/memoryGroup" = {
-      orientation = "inherit";
-      modules = [
-        "custom/memoryIcon"
-        "memory"
-      ];
-    };
-    "custom/memoryIcon" = {
-      format = "";
+      format = " {usage}%";
     };
     memory = {
-      format = "{percentage}%";
-    };
-    "group/diskGroup" = {
-      orientation = "inherit";
-      modules = [
-        "custom/diskIcon"
-        "disk"
-      ];
-    };
-    "custom/diskIcon" = {
-      format = "";
+      format = " {percentage}%";
     };
     disk = {
-      format = "{percentage_free}%";
+      format = "󰋊 {percentage_free}%";
     };
   };
 }
