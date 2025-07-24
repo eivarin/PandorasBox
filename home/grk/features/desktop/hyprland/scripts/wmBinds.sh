@@ -58,6 +58,19 @@ ManageVPNs(){
   echo "$vpn" | (grep active && nmcli c d "${vpn/(active)/}") || nmcli c u "$vpn"
 }
 
+CycleKeyboardLayout(){
+  keyboard="at-translated-set-2-keyboard"
+  hyprctl switchxkblayout "$keyboard" next
+  value=$(hyprctl devices | grep -i "$keyboard" -A 2 | tail -n1 | cut -f3,4 -d' ')
+  if [[ "$value" == "English (US)" ]]; then
+    flag="🇺🇸"
+  elif [[ "$value" == "Portuguese" ]]; then
+    flag="🇵🇹"
+  else
+    flag=""
+  fi
+  notify-send "${flag}Layout changed to ${value}${flag}"
+}
 
 
 subargs=("${@:2}")
@@ -74,6 +87,9 @@ case "$1" in
     ;;
   ManageVPNs)
     ManageVPNs
+    ;;
+  CycleKeyboardLayout)
+    CycleKeyboardLayout
     ;;
 
   *)

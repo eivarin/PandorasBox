@@ -64,6 +64,7 @@ in
 
       "$mod, Escape, exec, wmBinds ManageVPNs"
 
+      "$mod, Space, exec, wmBinds CycleKeyboardLayout"
     ] 
     ++ builtins.concatLists (builtins.genList workspaceBindsGenerator 9)
     ++ builtins.concatLists (builtins.genList specialWorkspaceGenerator 12)
