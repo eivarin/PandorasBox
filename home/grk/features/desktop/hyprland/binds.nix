@@ -35,7 +35,7 @@ in
       "$mod, m, exit"
       "ALT, l, exec, hyprlock"
       # "$mod, v, exec, copyq toggle"
-      "$mod, v, exec, cliphist-wofi-img"
+      "$mod, v, exec, cliphist-wofi-img | wl-copy"
 
       "$mod, Left, movefocus, l"
       "$mod, Down, movefocus, d"
