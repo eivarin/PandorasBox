@@ -53,6 +53,13 @@ ChangeMonitorSettings(){
   hyprctl keyword monitor "$monitorName","$selectedMode","$position","$scale"
 }
 
+ManageVPNs(){
+  vpn=$(nmcli --fields NAME,ACTIVE,TYPE c show | grep wireguard | tr -s ' ' | sed -e 's/yes/(active)/' -e 's/no//' -e 's/wireguard//' | wofi --dmenu | tr -d " ")
+  echo "$vpn" | (grep active && nmcli c d "${vpn/(active)/}") || nmcli c u "$vpn"
+}
+
+
+
 subargs=("${@:2}")
 # echo $subargs
 case "$1" in
@@ -64,6 +71,9 @@ case "$1" in
     ;;
   ChangeMonitorSettings)
     ChangeMonitorSettings "${subargs[@]}"
+    ;;
+  ManageVPNs)
+    ManageVPNs
     ;;
 
   *)

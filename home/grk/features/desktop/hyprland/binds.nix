@@ -62,7 +62,8 @@ in
       '', Print, exec, grim -g "$(slurp -d)" - | wl-copy''
       "$mod, p, execr, wmBinds ChangeMonitorSettings"
 
-      "$mod, Escape, exec, nmcli c show --active | grep hermes-epb && nmcli c down hermes-epb || nmcli c up hermes-epb"
+      "$mod, Escape, exec, wmBinds ManageVPNs"
+
     ] 
     ++ builtins.concatLists (builtins.genList workspaceBindsGenerator 9)
     ++ builtins.concatLists (builtins.genList specialWorkspaceGenerator 12)
