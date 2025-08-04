@@ -16,6 +16,7 @@
     ../common/optional/hyprland.nix
     ../common/optional/libinput.nix
     ../common/optional/pipewire.nix
+    ../common/optional/wine.nix
 
     ../../options/desktop
 
