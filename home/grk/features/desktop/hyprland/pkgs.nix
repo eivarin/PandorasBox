@@ -8,7 +8,7 @@ let
   };
   bitwarden-resize-script = pkgs.writeShellApplication {
     name = "bitwarden-resize-script";
-    runtimeInputs = [ pkgs.jq pkgs.hyprland pkgs.socat ];
+    runtimeInputs = [ pkgs.jq pkgs.yq pkgs.hyprland pkgs.socat ];
     text = builtins.readFile ./scripts/bitwarden-resize-script.sh;
   };
 in
@@ -16,7 +16,6 @@ in
   home.packages = with pkgs; [
     wev
     brightnessctl
-    hyprpolkitagent
     grim
     slurp
     wl-clipboard
