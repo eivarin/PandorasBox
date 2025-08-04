@@ -11,7 +11,7 @@
     ./hyprlock.nix
     ./hyprpaper.nix
     ./hyprpolkitagent.nix
-    ./kitty.nix
+    ./kitty
     ./nm-applet.nix
     ./pkgs.nix
     ./playerctld.nix

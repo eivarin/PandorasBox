@@ -32,6 +32,9 @@ in
       "$mod, F3, exec, qtfm"
       "$mod, F4, exec, kitty"
 
+      "$mod, Escape, execr, wmBinds OpenSpecialWorkspace MainTerminal"
+      "$mod, Pause, exec, wmBinds LaunchScriptInKittyWS"
+
       "$mod, m, exit"
       "ALT, l, exec, hyprlock"
       # "$mod, v, exec, copyq toggle"
@@ -62,7 +65,7 @@ in
       '', Print, exec, grim -g "$(slurp -d)" - | wl-copy''
       "$mod, p, execr, wmBinds ChangeMonitorSettings"
 
-      "$mod, Escape, exec, wmBinds ManageVPNs"
+      "$mod, Home, exec, wmBinds ManageVPNs"
 
       "$mod, Space, exec, wmBinds CycleKeyboardLayout"
     ] 

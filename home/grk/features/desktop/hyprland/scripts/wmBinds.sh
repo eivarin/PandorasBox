@@ -89,6 +89,49 @@ SwitchToWindow(){
   fi
 }
 
+OpenOrFocusKittyWS(){
+  monitor=$(hyprctl monitors -j | jq ".[] | select(.specialWorkspace.name == \"special:MainTerminal\").id")
+  if [[ -n $monitor ]]; then
+    hyprctl dispatch focusmonitor "$monitor"
+  else
+    hyprctl dispatch togglespecialworkspace MainTerminal
+      until [ -S /tmp/MainTerminal ]
+      do
+        sleep 0.1
+        # echo "Waiting for MainTerminal socket..."
+      done
+  fi
+}
+
+KittyLaunchInTab(){
+  remoteKitten(){
+    kitten @ --to unix:/tmp/MainTerminal "$@"
+  }
+  tabname=$1
+  cmd="${*:2}"
+  OpenOrFocusKittyWS
+  if [[ -n $(remoteKitten ls | jq ".[].tabs.[] | select(.title == \"$tabname\")") ]]; then
+    remoteKitten focus-tab -m "title:$tabname"
+  else
+    remoteKitten launch --type tab --tab-title "$tabname"
+  fi
+  until remoteKitten get-text | grep -q "grk@ares"
+  do
+      sleep 0.1
+      # echo "Waiting for tab $tabname to be ready..."
+  done
+  remoteKitten send-text -t "title:$tabname" "$cmd\n"
+}
+
+LaunchScriptInKittyWS(){
+  scripts=$(cat .config/kitty/commonScripts.yml)
+  scriptName=$(echo "$scripts" | yq -r '.[] | .name' | wofi --dmenu --prompt "Select script to run")
+  scriptObj=$(echo "$scripts" | yq -r ".[] | select(.name == \"$scriptName\")")
+  script=$(echo "$scriptObj" | yq -r '.command')
+  tab=$(echo "$scriptObj" | yq -r '.tabName')
+  KittyLaunchInTab "$tab" "$script"
+}
+
 subargs=("${@:2}")
 # echo $subargs
 case "$1" in
@@ -109,6 +152,16 @@ case "$1" in
     ;;
   SwitchToWindow)
     SwitchToWindow "${subargs[@]}"
+    ;;
+
+  OpenOrFocusKittyWS)
+    OpenOrFocusKittyWS "${subargs[@]}"
+    ;;
+  KittyLaunchInTab)
+    KittyLaunchInTab "${subargs[@]}"
+    ;;
+  LaunchScriptInKittyWS)
+    LaunchScriptInKittyWS "${subargs[@]}"
     ;;
 
   *)
