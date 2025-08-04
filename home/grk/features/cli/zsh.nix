@@ -1,5 +1,25 @@
 { pkgs, lib, config, ... }:
 
+
+let
+    zshConfigEarlyInit = lib.mkOrder 500 ''
+        if [ -d "$HOME/.scripts" ] ; then
+            PATH="$HOME/.scripts:$PATH"
+        fi
+        . <(flux completion zsh)
+    ''; 
+    zshConfig = lib.mkOrder 1000 ''
+
+    ''; 
+    zshConfigLateInit = lib.mkOrder 1500 ''
+        macchina
+        if [[ $1 == eval ]]
+        then
+            "$@"
+        set --
+        fi
+    '';
+in
 {
     home.packages = with pkgs; [
         htop
@@ -9,6 +29,7 @@
         ncdu
         direnv
         jq
+        yq
         fluxcd
         fzf
     ];
@@ -32,13 +53,7 @@
                 src = pkgs.zsh-syntax-highlighting.src;
             }
         ];
-        initContent = ''
-            if [ -d "$HOME/.scripts" ] ; then
-                PATH="$HOME/.scripts:$PATH"
-            fi
-            . <(flux completion zsh)
-            macchina
-        '';
+        initContent = lib.mkMerge [ zshConfigEarlyInit zshConfig zshConfigLateInit ];
         shellAliases = {
             poweroff = "systemctl poweroff";
             reboot = "systemctl reboot";
