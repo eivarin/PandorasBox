@@ -11,7 +11,7 @@
       workspace-taskbar = {
         enable = true;
         icon-size = config.waybar.barHeight - 12;
-        format = if config.waybar.compactMode then "{icon}" else "{icon} {title:.20}";
+        format = if config.waybar.compactMode then "{icon}" else "{icon} {title:.20}";
         update-active-window = true;
         on-click-window = "wmBinds SwitchToWindow {address} {button}";
       };

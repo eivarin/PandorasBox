@@ -59,15 +59,21 @@
     }
   ];
 
-    waybar = {
+  waybar = {
     rightModules = [
       "network#eno1"
       # "network#wlp4s0"
       "group/perf"
-      "pulseaudio"
+      "group/pulseaudioGrp"
+      # "pulseaudio"
       "group/powermenu"
     ];
-    # leftModules = [];
+    leftModules = [
+      "hyprland/language"
+      # "mpris"
+      "tray"
+      "hyprland/workspaces"
+    ];
     # centerModules = [];
     networkInterfaces = {
       eno1 = "ethernet";

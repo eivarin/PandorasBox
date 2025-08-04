@@ -1,26 +1,32 @@
+/* * {
+  all: unset;
+} */
+
+window#waybar {
+  background: rgba(0, 0, 0, 0);
+}
+
 window#waybar > box > box > widget > *,
 #workspaces > button,
 #cpu,
 #memory,
 #disk,
-#powermenu .module{
+#powermenu .module {
   background: alpha(#222222, 0.6);
   border-radius: 5px;
   box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.6);
   margin: 0 3px;
-  padding : 0 4px;
+  padding: 0 4px;
 }
 
 window#waybar > box > box > widget > #workspaces,
 window#waybar > box > box > widget > #perf,
-window#waybar > box > box > widget > #powermenu{
+window#waybar > box > box > widget > #powermenu {
   background: rgba(0, 0, 0, 0);
   box-shadow: 0px 0px 2px rgba(0, 0, 0, 0);
   margin: 0;
   padding: 0;
 }
-
-
 
 /* WORKSPACES SPECIFIC */
 #workspaces {
@@ -41,7 +47,7 @@ window#waybar > box > box > widget > #powermenu{
 
 #workspaces .taskbar-window {
   margin: 3px 0px 3px 2px;
-  padding: 2px;
+  padding: 0 2px;
   border-radius: 5px;
 }
 
@@ -51,6 +57,10 @@ window#waybar > box > box > widget > #powermenu{
 
 #workspaces .taskbar-window label {
   margin-right: 2.5px;
+}
+
+#workspaces .taskbar-window image {
+  margin: 2px;
 }
 
 #workspaces .taskbar-window.active {
@@ -93,9 +103,9 @@ window#waybar > box > box > widget > #powermenu{
 }
 
 @keyframes blinkCharging {
-    to {
-        color: #ffffff;
-    }
+  to {
+    color: #ffffff;
+  }
 }
 
 #battery.charging {
@@ -108,24 +118,25 @@ window#waybar > box > box > widget > #powermenu{
 }
 
 @keyframes blinkNotCharging {
-    to {
-        border-color: rgba(0, 0, 0, 0);
-        color: #ffffff;
-    }
+  to {
+    border-color: rgba(0, 0, 0, 0);
+    color: #ffffff;
+  }
 }
 
 #battery.critical:not(.charging) {
-    border-color: #ff0000;
-    color: #ff0000;
-    animation-name: blinkNotCharging;
-    animation-duration: 1s;
-    animation-timing-function: steps(12);
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
+  border-color: #ff0000;
+  color: #ff0000;
+  animation-name: blinkNotCharging;
+  animation-duration: 1s;
+  animation-timing-function: steps(12);
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
 }
 /* PULSEAUDIO SPECIFIC */
 
 #pulseaudio {
+  padding: 0 4px;
   border: 1px solid rgba(0, 0, 0, 0);
 }
 
@@ -134,7 +145,61 @@ window#waybar > box > box > widget > #powermenu{
 }
 
 #pulseaudio.bluetooth {
-  border-color: #008cff;
+  color: #008cff;
+}
+
+#pulseaudio-slider,
+#backlight-slider {
+  min-width: 0px;
+  min-height: 0px;
+  padding: 0px;
+  margin: 0 5px;
+  outline: 0;
+  background-image: none;
+  border: none;
+  box-shadow: none;
+}
+
+#pulseaudio-slider slider,
+#backlight-slider slider {
+  min-height: 0px;
+  min-width: 0px;
+  opacity: 0;
+  margin: 0;
+  background-color: #008cff;
+  background-image: none;
+  border: none;
+  box-shadow: none;
+  transition: margin 0.2s linear;
+}
+
+#pulseaudio-slider:hover slider,
+#backlight-slider:hover slider {
+  margin: -5px;
+}
+
+#pulseaudio-slider trough,
+#backlight-slider trough {
+  min-height: 6px;
+  min-width: 80px;
+  border-radius: 5px;
+  background-color: black;
+}
+#pulseaudio-slider highlight {
+  /* min-width: 1px; */
+  border-radius: 5px;
+  background-color: green;
+  transition: all 0.2s ease;
+}
+
+#backlight-slider highlight {
+  border-radius: 5px;
+  background-color: white;
+  transition: all 0.2s ease;
+}
+
+#pulseaudioGrp {
+  padding: 0px;
 }
 
 /* NETWORK SPECIFIC */
@@ -159,7 +224,11 @@ tooltip {
   margin: 0 3px;
 }
 
-
+/* FOR TESTING PURPOSES ONLY. ignored when built */
+* {
+  font-family: "Hurmit Nerd Font Propo";
+  font-size: 12px;
+}
 
 /* .modules-left {
     padding: 0px;
