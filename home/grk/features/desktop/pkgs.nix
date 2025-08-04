@@ -21,5 +21,7 @@
     orca-slicer
     freecad-wayland
     gimp3
+    wireshark
+    kdePackages.dolphin
   ];
 }

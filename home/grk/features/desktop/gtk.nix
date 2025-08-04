@@ -2,7 +2,6 @@
 
 {
   home.packages = with pkgs; [
-    nautilus
     vimix-cursors
     phinger-cursors
   ];
