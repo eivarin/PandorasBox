@@ -15,7 +15,7 @@
     users.grk = {
       isNormalUser = true;
       description = "grk";
-      extraGroups = [ "networkmanager" "wheel" "video" "docker" "dialout" ];
+      extraGroups = [ "networkmanager" "wheel" "video" "docker" "dialout" "wireshark" ];
       shell = pkgs.zsh;
       packages = [ pkgs.home-manager ];
     };
