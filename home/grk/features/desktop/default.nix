@@ -10,6 +10,7 @@
     ./hypridle.nix
     ./hyprlock.nix
     ./hyprpaper.nix
+    ./hyprpolkitagent.nix
     ./kitty.nix
     ./nm-applet.nix
     ./pkgs.nix
