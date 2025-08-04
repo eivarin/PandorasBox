@@ -31,6 +31,15 @@
       workspace = null;
     }
     {
+      name = "DP-3";
+      primary = false;
+      mode = "highrr";
+      scale = 1.0;
+      position = "0x0";
+      enabled = true;
+      workspace = null;
+    }
+    {
       name = "HDMI-A-3";
       primary = false;
       mode = "highres";
