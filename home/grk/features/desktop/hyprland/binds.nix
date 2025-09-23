@@ -46,7 +46,7 @@ in
         "$mod, F3, exec, qalculate-gtk"
 
         "$mod, Escape, execr, wmBinds OpenSpecialWorkspace MainTerminal"
-        "$mod, Pause, exec, wmBinds LaunchScriptInKittyWS"
+        "$mod, Delete, exec, wmBinds LaunchScriptInKittyWS"
 
         "$mod, m, exit"
         "ALT, l, exec, hyprlock"
