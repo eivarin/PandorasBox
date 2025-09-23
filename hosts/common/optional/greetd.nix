@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 
 # let hyprlandGreeterConfig = pkgs.writeText "hyprland-greeter.conf" ''
 #   env = GTK_USE_PORTAL=0
@@ -21,6 +21,7 @@
   # };
   programs.regreet = {
     enable = true;
+    package = pkgs.regreet;
     cageArgs = [ "-s" "-m" "last" ];
     settings = {
       background = {

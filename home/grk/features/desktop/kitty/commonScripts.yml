@@ -1,6 +1,12 @@
 - name: Rebuild NixOS Config
   command: "sudo nixos-rebuild switch --flake /PandorasBox#$(hostname)"
   tabName: "NixOS-Rebuild"
+- name: Rebuild Home-Manager Config
+  command: "home-manager switch --flake /PandorasBox#$(id -un)@$(hostname)"
+  tabName: "NixOS-Rebuild"
+- name: Update flake inputs
+  command: nix flake update --flake /PandorasBox
+  tabName: "NixOS-Rebuild"
 - name: Kill All Discord
   command: "killall discord"
   tabName: "Kill-Discord"

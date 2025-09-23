@@ -1,49 +1,81 @@
 {
   description = "Nixos config flake";
 
-  inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+  inputs = rec {
+    # nixpkgs-small.url = "github:nixos/nixpkgs/nixos-unstable-small";
+    # nixpkgs-stable-small.url = "github:nixos/nixpkgs/nixos-25.05-small";
+
+    nixos-unstable.url = "github:nixos/nixpkgs?ref=nixos-unstable";
+    nixos-unstable-small.url = "github:nixos/nixpkgs?ref=nixos-unstable-small";
+    nixos-25.url = "github:nixos/nixpkgs?ref=nixos-25.05";
+    nixos-25-small.url = "github:nixos/nixpkgs?ref=nixos-25.05-small";
+
+    nixpkgs = nixos-unstable;
 
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    zen-browser.url = "github:youwen5/zen-browser-flake";
-    waybar-untested.url = "github:pol-rivero/Waybar/";
+    zen-browser = {
+      url = "github:youwen5/zen-browser-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nvf = {
+      url = "github:NotAShelf/nvf";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    flake-utils.url = "github:numtide/flake-utils";
+    # nur = {
+    #   url = "github:nix-community/NUR";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
   };
 
   outputs =
     {
-      self,
-      nixpkgs,
-      home-manager,
       ...
     }@inputs:
-    {
-      nixosConfigurations = {
-        hermes = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs; };
-          modules = [
-            ./hosts/hermes/nixos-configuration.nix
-            home-manager.nixosModules.default
-          ];
+    let
+      pkgsRepos = {
+        "default" = { input = inputs.nixos-unstable; };
+        "unstable" = { input = inputs.nixos-unstable; };
+        "unstable-small" = { input = inputs.nixos-unstable-small; };
+        "25" = { input = inputs.nixos-25; };
+        "25-small" = { input = inputs.nixos-25-small; };
+      };
+      packagesOutputs = import ./packages {
+        flakeUtils = inputs.flake-utils;
+        inherit pkgsRepos;
+      };
+      customLib = import ./lib {
+        inherit inputs pkgsRepos;
+        lib = inputs.nixpkgs.lib;
+        flakePackages = packagesOutputs.packages;
+      };
+      flakeLib = customLib.lib.flakeHelper;
+      nixosOutputs = flakeLib.genNixOsOutputs {
+        ares = {
+          systemArch = "x86_64-linux";
         };
-        ares = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs; };
-          modules = [
-            ./hosts/ares/nixos-configuration.nix
-            home-manager.nixosModules.default
-          ];
+        hermes = {
+          systemArch = "x86_64-linux";
         };
       };
-      homeConfigurations = {
-        "grk@hermes" = home-manager.lib.homeManagerConfiguration {
-          modules = [ ./home/grk/hermes.nix ];
-          pkgs = import nixpkgs { system = "x86_64-linux"; };
-          extraSpecialArgs = {
-            inherit inputs;
-          };
+      homeManagerOutputs = flakeLib.genHomeManagerOutputs {
+        "grk@ares" = {
+          systemArch = "x86_64-linux";
+        };
+        "grk@hermes" = {
+          systemArch = "x86_64-linux";
         };
       };
-    };
+    in
+    customLib
+    //
+    packagesOutputs
+    // 
+    nixosOutputs
+    //
+    homeManagerOutputs
+    ;
 }

@@ -15,7 +15,7 @@
     ../common/optional/greetd.nix
     ../common/optional/hyprland.nix
     ../common/optional/libinput.nix
-    ../common/optional/pipewire.nix
+    ../common/optional/sound.nix
 
     ../../options/desktop
 

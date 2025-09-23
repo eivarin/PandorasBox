@@ -57,6 +57,8 @@ in
         shellAliases = {
             poweroff = "systemctl poweroff";
             reboot = "systemctl reboot";
+            nr = "f() { nix run nixpkgs#$@ };f";
+            ns = "f() { nix shell nixpkgs#$@ };f";
         };
     };
 }

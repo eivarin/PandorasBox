@@ -1,4 +1,11 @@
-{ inputs, outputs, ... }:
+{
+  inputs,
+  outputs,
+  hostname,
+  systemArch,
+  otherPackages,
+  ...
+}:
 {
   imports = [
     inputs.home-manager.nixosModules.home-manager
@@ -12,13 +19,17 @@
     ./zsh.nix
 
     ../../../options/global
-    ../../../packages
   ];
 
   home-manager = {
     useGlobalPkgs = true;
-    extraSpecialArgs = { 
-      inherit inputs outputs;
+    extraSpecialArgs = {
+      inherit
+        inputs
+        outputs
+        hostname
+        systemArch
+        otherPackages;
     };
   };
 

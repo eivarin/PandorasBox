@@ -4,6 +4,7 @@
   home.packages = with pkgs; [
     vimix-cursors
     phinger-cursors
+    nordzy-icon-theme
   ];
   home.pointerCursor = {
     name = "phinger-cursors-dark";
@@ -11,15 +12,25 @@
     size = 16;
     gtk.enable = true;
   };
+  dconf.settings = {
+    "org.gnome.desktop.interface" = {
+      color-scheme = "prefer-dark";
+    };
+  };
   gtk = {
     enable = true;
     theme = {
-      package = pkgs.vimix-gtk-themes;
-      name = "vimix-dark-doder";
+      package = pkgs.tokyonight-gtk-theme;
+      name = "Tokyonight-Dark";
+      # package = pkgs.nordic;
+      # name = "Nordic";
     };
     iconTheme = {
-      package = pkgs.vimix-icon-theme;
-      name = "Vimix-doder-dark";
+      package = pkgs.nordzy-icon-theme;
+      name = "Nordzy-dark";
+    };
+    gtk3.extraConfig = {
+      gtk-application-prefer-dark-theme = true;
     };
   };
 }

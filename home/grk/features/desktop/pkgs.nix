@@ -13,15 +13,20 @@
     obsidian
     inputs.zen-browser.packages."${config.systemArch}".default
     font-awesome
-    google-chrome
-    chromium
     multiviewer-for-f1
     kitty
     lens
-    orca-slicer
-    freecad-wayland
+    freecad
     gimp3
     wireshark
     kdePackages.dolphin
+    qalculate-gtk
+    satty
+    nautilus
+    nautilus-open-any-terminal
+    code-nautilus
+    freelens
+    whatsapp-electron
+    teams-for-linux
   ];
 }

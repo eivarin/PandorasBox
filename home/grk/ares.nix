@@ -6,9 +6,6 @@
     ../../options/desktop
   ];
 
-  hostname = "ares";
-  systemArch = "x86_64-linux";
-
   wallpaper = ../../wallpapers/grk.png;
 
   monitors = [
@@ -70,6 +67,7 @@
     ];
     leftModules = [
       "hyprland/language"
+      "hyprland/submap"
       # "mpris"
       "tray"
       "hyprland/workspaces"

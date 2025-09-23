@@ -1,4 +1,4 @@
-{ config, inputs, ... }:
+{ config, inputs, pkgs, ... }:
 
 {
   imports = [
@@ -7,6 +7,7 @@
   ];
   programs.waybar = {
     enable = true;
-    package = inputs.waybar-untested.packages."${config.systemArch}".waybar;
+    # package = inputs.waybar-untested.packages."${config.systemArch}".waybar;
+    package = pkgs.waybar;
   };
 }

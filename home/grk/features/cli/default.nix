@@ -7,6 +7,8 @@
     ./git.nix
     ./kube.nix
     ./mise.nix
+    ./nixpkgs.nix
+    ./nvf.nix
     ./pkgs.nix
     ./zsh.nix
   ];

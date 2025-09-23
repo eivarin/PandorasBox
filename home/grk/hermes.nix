@@ -6,9 +6,6 @@
     ../../options/desktop
   ];
 
-  hostname = "hermes";
-  systemArch = "x86_64-linux";
-
   wallpaper = ../../wallpapers/grk.png;
 
   waybar = {

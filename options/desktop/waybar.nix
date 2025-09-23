@@ -24,6 +24,7 @@ in
           type = types.listOf types.str;
           default = [
             "hyprland/language"
+            "hyprland/submap"
             # "mpris"
             "tray"
             "hyprland/workspaces"

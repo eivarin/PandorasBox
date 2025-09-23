@@ -10,6 +10,7 @@
       format = "{icon}{windows}";
       workspace-taskbar = {
         enable = true;
+        icon-theme = "default";
         icon-size = config.waybar.barHeight - 12;
         format = if config.waybar.compactMode then "{icon}" else "{icon} {title:.20}";
         update-active-window = true;

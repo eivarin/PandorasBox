@@ -2,16 +2,20 @@
 {
   imports = [
     ./hyprland
+    ./kitty
+    ./qalculate-gtk
     ./waybar
+
+
     ./blueman-applet.nix
     ./dunst.nix
+    ./firefoxpwa.nix
     ./games.nix
     ./gtk.nix
     ./hypridle.nix
     ./hyprlock.nix
     ./hyprpaper.nix
     ./hyprpolkitagent.nix
-    ./kitty
     ./nm-applet.nix
     ./pkgs.nix
     ./playerctld.nix

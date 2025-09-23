@@ -15,13 +15,21 @@
     users.grk = {
       isNormalUser = true;
       description = "grk";
-      extraGroups = [ "networkmanager" "wheel" "video" "docker" "dialout" "wireshark" ];
+      extraGroups = [
+        "networkmanager"
+        "wheel"
+        "video"
+        "docker"
+        "dialout"
+        "wireshark"
+        "libvirt"
+        "kvm"
+        "adbusers"
+      ];
       shell = pkgs.zsh;
       packages = [ pkgs.home-manager ];
     };
   };
-
-  
 
   home-manager.users.grk = import ../../../../home/grk/${config.hostname}.nix;
 }

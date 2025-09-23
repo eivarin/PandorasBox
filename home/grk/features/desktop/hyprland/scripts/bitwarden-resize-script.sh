@@ -31,7 +31,3 @@ handle() {
 
 # Listen to the Hyprland socket for events and process each line with the handle function
 socat -U - UNIX-CONNECT:"$XDG_RUNTIME_DIR"/hypr/"$HYPRLAND_INSTANCE_SIGNATURE"/.socket2.sock | while read -r line; do handle "$line"; done
-
-smtp.gmail.com
-rodrigommpereira309@gmail.com
-aqgfnvmeirvgviqf

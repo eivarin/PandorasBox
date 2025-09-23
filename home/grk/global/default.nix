@@ -1,10 +1,12 @@
-{ ... }:
+{ hostname, systemArch, ... }:
 {
   imports = [
     ../features/cli
     
     ../../../options/global
   ];
+
+  inherit hostname systemArch;
 
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -15,13 +17,6 @@
     file = {};
     sessionVariables = {};
   };
-
-  # nixpkgs = {
-  #   config = {
-  #     allowUnfree = true;
-  #     allowUnfreePredicate = (_: true);
-  #   };
-  # };
 
   fonts.fontconfig.enable = true;
 

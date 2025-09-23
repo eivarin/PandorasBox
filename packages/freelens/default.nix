@@ -1,0 +1,1 @@
+args: (import ../pkgHelper.nix { defaultDerivationFile = ./package-from-binary.nix; }) args

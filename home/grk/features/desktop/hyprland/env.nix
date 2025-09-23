@@ -2,8 +2,10 @@
 {
   wayland.windowManager.hyprland.settings = {
     env = [
-      "HYPRCURSOR_THEME,Vimix-Cursors"
-      "HYPRCURSOR_SIZE,16"
+      # "GSK_RENDERER,ngl"
+      # "GDK_BACKEND,wayland,x11,*"
+      # "HYPRCURSOR_THEME,Vimix-Cursors"
+      # "HYPRCURSOR_SIZE,16"
     ];
   };
 }

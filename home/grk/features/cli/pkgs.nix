@@ -6,5 +6,7 @@
     inetutils
     dig
     tldr
+    borgbackup
+    n
   ];
 }
