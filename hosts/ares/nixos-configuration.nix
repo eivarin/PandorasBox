@@ -20,6 +20,7 @@
     ../common/optional/libinput.nix
     ../common/optional/sound.nix
     ../common/optional/virtualization.nix
+    ../common/optional/vscode-server.nix
     ../common/optional/wine.nix
 
     ../../options/desktop
