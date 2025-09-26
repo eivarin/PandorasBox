@@ -29,5 +29,8 @@
     whatsapp-electron
     teams-for-linux
     zoom-us
+    firefox
+    chromium
+    google-chrome
   ];
 }
