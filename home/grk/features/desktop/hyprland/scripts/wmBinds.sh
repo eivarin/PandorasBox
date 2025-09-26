@@ -40,17 +40,41 @@ OpenSpecialWorkspace(){
 
 ChangeMonitorSettings(){
   monitors=$(hyprctl monitors -j)
-  monitorName=$(echo "$monitors" | jq -r ".[] | .name" | wofi --show dmenu --prompt "Select monitor" --width 50% --height 50% --cache-file /tmp/wofi-cache)
+  monitorName=$(echo "$monitors" | jq -r ".[] | .name" | wofi --show dmenu --prompt "Select monitor" --cache-file /tmp/wofi-monitor-cache)
+  if [[ -z "$monitorName" ]]; then
+    return
+  fi
   # echo "monitorName: $monitorName"
   monitorJSON=$(echo "$monitors" | jq -r ".[] | select(.name == \"$monitorName\")")
   # echo "monitorJSON: $monitorJSON"
-  selectedMode=$(echo "$monitorJSON" | jq -r ".availableModes[]" | wofi --show dmenu --prompt "Select mode")
+  selectedMode=$(echo "$monitorJSON" | jq -r ".availableModes[]" | wofi --show dmenu --prompt "Select resolution for $monitorName" --cache-file /tmp/wofi-"$monitorName"-res-cache)
+  if [[ -z "$selectedMode" ]]; then
+    return
+  fi
   # echo "selectedMode: $selectedMode"
-  position=$(printf "auto\nauto-left\nauto-right\nauto-up\nauto-down" | wofi --show dmenu --prompt "Select mode")
-  # echo "position: $position"
   scale=$(echo "auto" | wofi --show dmenu --prompt "Select scale")
+  if [[ -z "$scale" ]]; then
+    return
+  fi
+  mode=$(printf "mirror\nexpand" | wofi --show dmenu --prompt "Select mode" --cache-file /tmp/wofi-"$monitorName"-mode-cache)
+  if [[ -z "$mode" ]]; then
+    return
+  fi
+  if [[ "$mode" == "mirror" ]]; then
+    mirror_monitor=$(echo "$monitors" | jq -r ".[] | .name" | wofi --show dmenu --prompt "Select monitor to mirror" --cache-file /tmp/wofi-mirror-cache)
+    if [[ -z "$mirror_monitor" ]]; then
+      return
+    fi
+    hyprctl keyword monitor "$monitorName","$selectedMode","$position","$scale",mirror,"$mirror_monitor"
+  else
+    position=$(printf "auto\nauto-left\nauto-right\nauto-up\nauto-down" | wofi --show dmenu --prompt "Select position" --cache-file /tmp/wofi-"$monitorName"-position-cache)
+    if [[ -z "$position" ]]; then
+      return
+    fi
+    hyprctl keyword monitor "$monitorName","$selectedMode","$position","$scale"
+  fi
+  # echo "position: $position"
   # echo "scale: $scale"
-  hyprctl keyword monitor "$monitorName","$selectedMode","$position","$scale"
 }
 
 ManageVPNs(){
