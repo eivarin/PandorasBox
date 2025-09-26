@@ -28,5 +28,6 @@
     freelens
     whatsapp-electron
     teams-for-linux
+    zoom-us
   ];
 }
