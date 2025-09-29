@@ -13,6 +13,7 @@
     ../common/optional/boot.nix
     ../common/optional/dconf.nix
     ../common/optional/greetd.nix
+    ../common/optional/fprintd.nix
     ../common/optional/hyprland.nix
     ../common/optional/libinput.nix
     ../common/optional/sound.nix
