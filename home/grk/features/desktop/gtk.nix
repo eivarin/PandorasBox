@@ -22,15 +22,21 @@
     theme = {
       package = pkgs.tokyonight-gtk-theme;
       name = "Tokyonight-Dark";
-      # package = pkgs.nordic;
-      # name = "Nordic";
     };
     iconTheme = {
       package = pkgs.nordzy-icon-theme;
       name = "Nordzy-dark";
     };
     gtk3.extraConfig = {
-      gtk-application-prefer-dark-theme = true;
+      gtk-application-prefer-dark-theme = 1;
     };
+    gtk4.extraConfig = {
+      gtk-application-prefer-dark-theme = 1;
+    };
+  };
+  qt = {
+    enable = true;
+    style.name = "Tokyonight-Dark";
+    platformTheme.name = "gtk3";
   };
 }
