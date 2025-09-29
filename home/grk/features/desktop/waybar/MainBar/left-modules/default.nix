@@ -2,6 +2,7 @@
 {
   imports = [
     ./hyprland-workspaces.nix
+    ./idle_inhibitor.nix
     ./tray.nix
     ./mpris.nix
   ];

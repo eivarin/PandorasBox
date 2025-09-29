@@ -27,6 +27,7 @@ in
             "hyprland/submap"
             # "mpris"
             "tray"
+            "idle_inhibitor"
             "hyprland/workspaces"
           ];
           description = ''
