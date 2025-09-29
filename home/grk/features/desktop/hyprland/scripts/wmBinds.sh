@@ -139,7 +139,7 @@ KittyLaunchInTab(){
   else
     remoteKitten launch --type tab --tab-title "$tabname"
   fi
-  until remoteKitten get-text | grep -q "grk@ares"
+  until remoteKitten get-text | grep -q "grk@$(hostname)"
   do
       sleep 0.1
       # echo "Waiting for tab $tabname to be ready..."
