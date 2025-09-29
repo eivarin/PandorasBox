@@ -53,4 +53,5 @@
       workspace = null;
     }
   ];
+  fingerprint_auth = true;
 }

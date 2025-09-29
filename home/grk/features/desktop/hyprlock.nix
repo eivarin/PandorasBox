@@ -1,9 +1,13 @@
-{ ... }:
+{ config, ... }:
 
 {
   programs.hyprlock = {
     enable = true;
     settings = {
+      auth = {
+        "pam:enabled" = true;
+        "fingerprint:enabled" = config.home.fingerprint_auth or false;
+      };
       background = {
         path = "screenshot";
         blur_passes = 4;
