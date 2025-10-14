@@ -39,23 +39,26 @@ OpenSpecialWorkspace(){
 }
 
 ChangeMonitorSettings(){
-  monitors=$(hyprctl monitors -j)
+  monitors=$(hyprctl monitors all -j)
   monitorName=$(echo "$monitors" | jq -r ".[] | .name" | wofi --show dmenu --prompt "Select monitor" --cache-file /tmp/wofi-monitor-cache)
   if [[ -z "$monitorName" ]]; then
     return
   fi
-  # echo "monitorName: $monitorName"
   monitorJSON=$(echo "$monitors" | jq -r ".[] | select(.name == \"$monitorName\")")
-  # echo "monitorJSON: $monitorJSON"
   selectedMode=$(echo "$monitorJSON" | jq -r ".availableModes[]" | wofi --show dmenu --prompt "Select resolution for $monitorName" --cache-file /tmp/wofi-"$monitorName"-res-cache)
   if [[ -z "$selectedMode" ]]; then
     return
   fi
-  # echo "selectedMode: $selectedMode"
+  selectedMode=${selectedMode%Hz} # remove Hz if present
+  position=$(printf "auto\nauto-left\nauto-right\nauto-up\nauto-down" | wofi --show dmenu --prompt "Select position" --cache-file /tmp/wofi-"$monitorName"-position-cache)
+  if [[ -z "$position" ]]; then
+    return
+  fi
   scale=$(echo "auto" | wofi --show dmenu --prompt "Select scale")
   if [[ -z "$scale" ]]; then
     return
   fi
+  monitorValue="$monitorName","$selectedMode","$position","$scale"
   mode=$(printf "mirror\nexpand" | wofi --show dmenu --prompt "Select mode" --cache-file /tmp/wofi-"$monitorName"-mode-cache)
   if [[ -z "$mode" ]]; then
     return
@@ -65,16 +68,9 @@ ChangeMonitorSettings(){
     if [[ -z "$mirror_monitor" ]]; then
       return
     fi
-    hyprctl keyword monitor "$monitorName","$selectedMode","$position","$scale",mirror,"$mirror_monitor"
-  else
-    position=$(printf "auto\nauto-left\nauto-right\nauto-up\nauto-down" | wofi --show dmenu --prompt "Select position" --cache-file /tmp/wofi-"$monitorName"-position-cache)
-    if [[ -z "$position" ]]; then
-      return
-    fi
-    hyprctl keyword monitor "$monitorName","$selectedMode","$position","$scale"
+    monitorValue="$monitorValue",mirror,"$mirror_monitor"
   fi
-  # echo "position: $position"
-  # echo "scale: $scale"
+  hyprctl keyword monitor "$monitorValue"
 }
 
 ManageVPNs(){
