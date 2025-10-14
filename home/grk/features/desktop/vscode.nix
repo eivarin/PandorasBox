@@ -11,6 +11,10 @@
         alejandra
         nixfmt-rfc-style
         nixpkgs-fmt
+        go
+        gopls
+        go-tools
+        libgcc
       ]
     );
   };
