@@ -22,7 +22,7 @@
     ../common/optional/virtualization.nix
     ../common/optional/vscode-server.nix
     ../common/optional/wine.nix
-
+    ../common/optional/pkgs/obs.nix
     ../../options/desktop
 
 
