@@ -17,8 +17,7 @@
     kitty
     lens
     freecad
-    gimp3
-    wireshark
+    gimp3    
     kdePackages.dolphin
     qalculate-gtk
     satty
