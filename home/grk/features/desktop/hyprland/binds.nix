@@ -37,7 +37,9 @@ in
         "$mod, q, exec, kitty"
         "$mod, RETURN, exec, kitty"
 
-        "$mod, d, exec, wofi  --show drun -I -m -G"
+        "$mod, d, exec, rofi -modes drun,nix:rofi-nix -show drun"
+        "$mod, e, exec, rofi -modes emoji -show emoji"
+        
 
         "$mod SHIFT, q, killactive"
         "$mod SHIFT, e, forcekillactive"

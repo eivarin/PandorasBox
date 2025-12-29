@@ -26,6 +26,7 @@
     };
     vscode-server.url = "github:nix-community/nixos-vscode-server";
     flake-utils.url = "github:numtide/flake-utils";
+    rofi-nix.url = "sourcehut:~fgaz/rofi-nix";
     # nur = {
     #   url = "github:nix-community/NUR";
     #   inputs.nixpkgs.follows = "nixpkgs";

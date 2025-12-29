@@ -4,6 +4,7 @@
     ./hyprland
     ./kitty
     ./qalculate-gtk
+    ./rofi
     ./waybar
 
 
