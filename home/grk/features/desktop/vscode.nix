@@ -14,7 +14,7 @@
         go
         gopls
         go-tools
-        libgcc
+        gccgo
       ]
     );
   };
