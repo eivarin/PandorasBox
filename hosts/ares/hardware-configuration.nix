@@ -53,6 +53,12 @@
       ];
     };
   };
+  security.wrappers.nvtop = {
+    owner = "root";
+    group = "root";
+    source = "${pkgs.nvtopPackages.intel}/bin/nvtop";
+    capabilities = "cap_perfmon+ep";
+  };
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
