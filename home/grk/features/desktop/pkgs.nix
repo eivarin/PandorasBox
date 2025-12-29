@@ -31,5 +31,6 @@
     firefox
     chromium
     google-chrome
+    orca-slicer
   ];
 }
