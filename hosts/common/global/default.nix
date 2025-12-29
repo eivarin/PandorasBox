@@ -40,6 +40,9 @@
     };
   };
 
+  environment.stub-ld.enable = true;
+  programs.nix-ld.enable = true;
+
   system.stateVersion = "24.11";
   time.timeZone = "Europe/Lisbon";
 }
