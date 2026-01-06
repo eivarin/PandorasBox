@@ -11,8 +11,12 @@
       ipc = "on";
       splash = "false";
       splash_duration = "2";
-      preload = ["~/.config/wp.png"];
-      wallpaper = [",~/.config/wp.png"];
+      wallpaper = [
+        {
+          monitor = "";
+          path = "~/.config/wp.png";
+        }
+      ];
     };
   };
 }
