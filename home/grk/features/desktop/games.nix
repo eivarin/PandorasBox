@@ -7,5 +7,6 @@
   home.packages = with pkgs; [
     bolt-launcher
     ryubing
+    lutris
   ];
 }
