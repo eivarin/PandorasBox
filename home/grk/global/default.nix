@@ -24,9 +24,11 @@
     home-manager.enable = true;
     git = {
       enable = true;
-      userName = "eivarin";
-      userEmail = "rodrigommpereira309@gmail.com";
-      extraConfig = {
+      settings = {
+        user = {
+          name = "eivarin";
+          email = "rodrigommpereira309@gmail.com";
+        };
         init = { defaultBranch = "main"; };
       };
     };
