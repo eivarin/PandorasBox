@@ -9,7 +9,7 @@
         sops
         nixd
         alejandra
-        nixfmt-rfc-style
+        nixfmt
         nixpkgs-fmt
         go
         gopls
