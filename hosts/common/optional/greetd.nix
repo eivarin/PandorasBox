@@ -22,7 +22,7 @@
   programs.regreet = {
     enable = true;
     package = pkgs.regreet;
-    cageArgs = [ "-s" "-m" "last" ];
+    cageArgs = [ "-d" "-s" "-m" "last" ];
     settings = {
       background = {
         path = "/etc/greetd/wp.png";
