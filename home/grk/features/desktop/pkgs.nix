@@ -32,5 +32,6 @@
     chromium
     google-chrome
     orca-slicer
+    drawio
   ];
 }
