@@ -26,6 +26,7 @@
       mouse_map middle release ungrabbed paste_from_selection
       mouse_map right press grabbed,ungrabbed discard_event
       mouse_map right click grabbed,ungrabbed copy_to_clipboard
+      map ctrl+backspace send_text all \x17
     '';
   };
 }
