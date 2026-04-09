@@ -24,7 +24,7 @@
     nautilus
     nautilus-open-any-terminal
     code-nautilus
-    freelens
+    freelens-bin
     whatsapp-electron
     teams-for-linux
     zoom-us
