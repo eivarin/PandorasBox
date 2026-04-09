@@ -14,7 +14,6 @@
     # ../common/optional/bluetooth.nix
     ../common/optional/boot.nix
     ../common/optional/dconf.nix
-    # ../common/optional/graphics.nix
     ../common/optional/greetd.nix
     ../common/optional/hyprland.nix
     ../common/optional/libinput.nix
